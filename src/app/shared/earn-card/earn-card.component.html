@@ -1,0 +1,27 @@
+<!--<div class="video-snapshot-container earn-cards">-->
+<!--    <img class="earn-image" src="{{earnActivity.image}}" alt="">-->
+<!--</div>-->
+
+<div class="no-lines" (click)="triggerActivityMessage()">
+    <div class="card">
+        <div class="details">
+            <div class="video-desc">
+                <h3>{{earnActivity.action}}</h3>
+                <span>{{earnActivity.title}}</span>
+                <span *ngIf="!earnActivity.active">(Coming soon)</span>
+                <span *ngIf="earnActivity.active === true">🟢 LIVE</span>
+            </div>
+        </div>
+        <div class="details video-earned">
+            <div *ngIf="earnActivity.reward > 0" >
+                <img src="../../../../../../assets/logos/syouicon.png" alt="">
+                <span> {{earnActivity.reward}} (${{solstreamToDollar(earnActivity.reward)}})</span>
+            </div>
+            <div *ngIf="earnActivity.conditions">
+                <span>{{earnActivity.conditions}}</span>
+            </div>
+        </div>
+
+        <img class="logo-activity" src="{{earnActivity.image}}" alt="">
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div *ngIf="!disabled" class="parti-container">
+    <div id="parti-action" *ngIf="showActions">
+        <fa-icon (click)="actionClicked.emit()" class="action" [icon]="commentIcon"></fa-icon>
+    </div>
+    <div id="parti">
+        <div class="participant" *ngFor="let confParticipant of confParticipants">
+            <div class="parti-name" [ngClass]="{ 'active' : confParticipant.inConference, 'pending': confParticipant.pendingInvite, 'rejected': confParticipant.rejectedInvite }">
+                <span>{{confParticipant.participant.info.name}}</span> <i *ngIf="confParticipant.handRaised" class="fa-solid fa-hand raised"></i>
+                <div class="user-actions">
+                    <i class="fa-solid fa-user-plus" *ngIf="confParticipant.inConference === false && !confParticipant.pendingInvite" (click)="enableAudio(confParticipant)"></i>
+                    <i class="fa-solid fa-user-minus" *ngIf="confParticipant.inConference === true" (click)="disableAudio(confParticipant)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="disabled" class="panel parti-container fx-center-items">
+    <fa-icon class="fa-dark fa-big" [icon]="userIcon"></fa-icon>
+</div>

@@ -1,0 +1,29 @@
+<div class="modal-container">
+    <div>
+        <!-- <h3><b>Disclaimer</b></h3> -->
+        <!-- <button class="close-button pointer" (click)="hideModal()">
+            <mat-icon class="material-icons">close</mat-icon>
+        </button> -->
+        <p>
+            <share-buttons theme="circles-dark"
+               [include]="['copy', 'facebook', 'email', 'messenger', 'sms', 'telegram',  'twitter','whatsapp']"
+               [showIcon]="true"
+               [showText]="false"
+               description="Share Buttons"
+               class="pt-5">
+            </share-buttons>
+        </p>
+        <div *ngIf="data.isMobile === false">
+            <div class="fx-center-items">or embed this video:</div>
+            <div class="margin-top-16 margin-bottom-16">
+                <input class="embed" type="text" value='{{embedString}}'>
+                <p class="copy fx-center-items" (click)="copyEmbedUrl(embedString)">COPY</p>
+            </div>
+        </div>
+        <div class="mt-2 d-flex align-items-center justify-content-center g-2 buttons-pad">
+            <button mat-raised-button class="light-button"  (click)="hideModal()">
+                <span class="">Close</span>
+            </button>
+        </div>
+    </div>
+</div>

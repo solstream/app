@@ -1,0 +1,25 @@
+<div class="channel">
+    <div class="channel-image">
+        <app-channel-icon *ngIf="room" [isPremium]="room.premium" [small]="true" [iconUrl]="room.avatarAzureUrl"></app-channel-icon>
+    </div>
+    <div (click)="goToRoom()" class="channel-data">
+        <div [ngClass]="{'white': carousel === false}"
+             class="channel-name">
+            {{room.roomTitle}}
+            <app-premium-tick [isVerified]="room.premium"></app-premium-tick>
+        </div>
+
+        <div *ngIf="!carousel" class="channel-topic white">{{room.roomTopic}}</div>
+    </div>
+    <div *ngIf="showLiveStatus" class="channel-stats">
+        <div *ngIf="room.isLive" class="circle-red"></div>
+        <div *ngIf="!room.isLive" class="circle-gray"></div>
+        <span *ngIf="room.isLive && room.observersCount > 0">{{room.observersCount}}</span>
+    </div>
+</div>
+<div *ngIf="carousel" class="stream-topic inline-block topic-badge">
+    {{room.roomTopic}}
+</div>
+
+
+

@@ -1,0 +1,15 @@
+<div class="channel-data">
+    <div class="channel-info">
+        <div id="alignPhoto">
+            <img *ngIf="device.isMobile()" width="80px" class="navbar-avatar"
+                 src="{{room.avatarAzureUrl}}"/>
+        </div>
+        <div class="profileWrapper">
+            <div class="channel-name">{{room.roomName}}</div>
+            <app-premium-tick [isVerified]="room.premium"></app-premium-tick>
+            <div class="channel-topic">{{room.roomDescription}}</div>
+            <div class="channel-topic">{{room.bioText}}</div>
+        </div>
+    </div>
+    <div class="stream-topic">{{room.roomTopic}}</div>
+</div>

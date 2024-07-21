@@ -1,0 +1,29 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="fx-container fx-start app-container">
+    <div class="earnings-container">
+        <div class="redeem-container" *ngIf="featureEnabled()">
+            <p class="balance">Unclaimed solstream: {{solstreamBalance}}</p>
+            <button (click)="openModal()" mat-raised-button class="redeem-btn standard-button-purple">
+                <span class="black-text">REDEEM</span>
+            </button>
+        </div>
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="How to earn">
+                <app-rewards-opportunities></app-rewards-opportunities>
+            </mat-tab>
+<!--            TODO domo: disabling while recalculating-->
+            <mat-tab [disabled]="true" label="Earnings">
+<!--                <app-account-earnings-earnings-tab></app-account-earnings-earnings-tab>-->
+            </mat-tab>
+            <mat-tab [disabled]="!featureEnabled()">
+                <ng-template mat-tab-label>
+                    <label class="labelHeading" matTooltipPosition="right" matTooltip="The withdrawal functionality will be enabled once the token is on the market">Withdrawals <i class="fa-solid fa-circle-info"></i></label>
+                </ng-template>
+                <app-account-earnings-withdrawals-tab></app-account-earnings-withdrawals-tab>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+
+<app-footer></app-footer>

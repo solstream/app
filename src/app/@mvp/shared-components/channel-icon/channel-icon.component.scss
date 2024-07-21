@@ -1,0 +1,23 @@
+:host, .channel-image {
+  //margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-default {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+}
+
+.img-custom {
+  height: 90px;
+  width: 90px;
+  border-radius: 100px;
+}
+
+.sm {
+  height: 2rem;
+  width: 2rem;
+}

@@ -1,0 +1,33 @@
+<ng-template #callAPIDialog>
+    <div class="mat-dialog-container login-dialog-container">
+        <mat-dialog-content>
+            <i (click)="closeDialog()" class="fa-solid fa-xmark close-icon"></i>
+            <div [ngSwitch]="currentStep">
+                <div *ngSwitchCase="loginPopupSteps.WELCOME">
+                    <app-register-modal-welcome></app-register-modal-welcome>
+                </div>
+                <div *ngSwitchCase="loginPopupSteps.CREATE_ACCOUNT">
+                    <app-register-modal-create-account></app-register-modal-create-account>
+                </div>
+                <div *ngSwitchCase="loginPopupSteps.LOGIN">
+                    <app-login-popup-login [errorMessage]="errorMessage"></app-login-popup-login>
+                </div>
+                <div *ngSwitchCase="loginPopupSteps.LOGIN_EMAIL">
+                    <app-email-login></app-email-login>
+                </div>
+                <div *ngSwitchCase="loginPopupSteps.FORGOT_PASSWORD">
+                    <app-forgot-password></app-forgot-password>
+                </div>
+                <div *ngSwitchCase="loginPopupSteps.REGISTER_EMAIL">
+                    <app-sign-up [invitationCode]="invitationCode"></app-sign-up>
+                </div>
+                <div *ngSwitchCase="loginPopupSteps.RESET_PASSWORD">
+                    <app-reset-password [token]="passwordResetToken"></app-reset-password>
+                </div>
+                <!--            <div *ngSwitchCase="loginPopupSteps.EDIT_ACCOUNT">-->
+                <!--                <app-host-console></app-host-console>-->
+                <!--            </div>-->
+            </div>
+        </mat-dialog-content>
+    </div>
+</ng-template>

@@ -1,0 +1,14 @@
+.channel-card-container {
+  width: 320px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.channel-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h4 {
+  margin-left: 2rem;
+}

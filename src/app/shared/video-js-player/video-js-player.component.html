@@ -1,0 +1,29 @@
+<div *ngIf="!hoverCarousel" [class.vjs-fw]="!isCarousel"
+     [class.vjs-carousel]="isCarousel">
+    <!--    <div class="vjs-batch-container">-->
+    <!--        <app-live-chip *ngIf="isLive()"></app-live-chip>-->
+    <!--        <app-record-chip *ngIf="isRecord()"></app-record-chip>-->
+    <!--    </div>-->
+    <app-video-chip [videoType]="video?.videoType"></app-video-chip>
+    <app-video-js-item *ngIf="show"
+                       [isCarousel]="isCarousel"
+                       [videoUrl]="videoUrl"
+                       (videoPaused)="videoPaused.emit()"
+                       (videoPlaying)="videoPlaying.emit()"
+    ></app-video-js-item>
+</div>
+
+<div *ngIf="hoverCarousel" [class.vjs-fw]="!isCarousel" class="pointer border-radius"
+     [class.vjs-carousel]="isCarousel">
+    <!--    <div class="vjs-batch-container">-->
+    <!--        <app-live-chip *ngIf="isLive()"></app-live-chip>-->
+    <!--        <app-record-chip *ngIf="isRecord()"></app-record-chip>-->
+    <!--    </div>-->
+<!--    <app-video-chip [videoType]="video?.videoType"></app-video-chip>-->
+    <app-video-js-item *ngIf="show"
+                       [isCarousel]="isCarousel"
+                       [videoUrl]="videoUrl"
+                       (videoPaused)="videoPaused.emit()"
+                       (videoPlaying)="videoPlaying.emit()"
+    ></app-video-js-item>
+</div>

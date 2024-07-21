@@ -1,0 +1,5 @@
+<div class="avatar-wrapper" [ngClass]="{'small-wrapper' : size === 'small'}">
+    <img *ngIf="avatarSrc" src="{{avatarSrc}}" alt="Avatar" class="avatar">
+    <img *ngIf="!avatarSrc" src="/assets/icons/login-btn.png" alt="Avatar" class="avatar">
+</div>
+

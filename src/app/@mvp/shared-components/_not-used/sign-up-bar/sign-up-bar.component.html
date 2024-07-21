@@ -1,0 +1,23 @@
+<div *ngIf="showSignUpBar">
+
+    <div *ngIf="mob.isDesktop(); else mobileBar"
+         class="signup-bar pishing-alert-bar">
+        <div>
+            <p>
+                <strong>Sign up to experience the best on the website.</strong>
+                Chat, follow or subscribe.
+                <button mat-raised-button style="float: right;" class="light-button pointer sign-up"
+                        (click)="walletSignup()">
+                    <span class="">Sign Up</span>
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <ng-template #mobileBar>
+        <div [hidden]="!showSignUpBar" class="signup-bar pishing-alert-bar fx-center-items">
+            <span><a (click)="walletSignup()"><strong>Sign up</strong></a> to experience the best on the website.</span>
+        </div>
+    </ng-template>
+
+</div>

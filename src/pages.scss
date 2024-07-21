@@ -1,0 +1,59 @@
+.modal-container {
+  color: #fff;
+  line-height: 20px;
+  font-size: 14px;
+  background: #292929;
+  border-radius: 3px;
+  padding: 20px;
+}
+
+.allow-button {
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 3px;
+  border: 1px solid $papelGrey2;
+  background-color: $papelGrey2;
+}
+
+.cookies-link {
+  color: $papelGrey1;
+}
+
+.page-container {
+  margin-top: 30px;
+}
+
+.page-body-container {
+  padding: 0px 40px 20px;
+  position: relative;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+.page-body-container li {
+  margin-bottom: 10px
+}
+
+.logout {
+  // margin-top: 10px;
+}
+
+.user-menu {
+  background: $papelBlack1;
+  color: $papelGrey1;
+  border: groove $papelGrey1;
+}
+
+.icon-tab {
+  position: relative; 
+  float: left; 
+  margin-right: 30px;
+}
+
+.benefict-menu {
+  margin-top: 50px;
+}

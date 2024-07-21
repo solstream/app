@@ -1,0 +1,14 @@
+<h3><b>Select video snapshot</b></h3>
+<div style="min-height: 100px;">
+    <ng-container *ngIf="hasPreview()">
+        <img *ngIf="snapshot1" [class.selected]="isSelected(file1)" (click)="select(this.file1)" [src]="snapshot1">
+        <img *ngIf="snapshot2" [class.selected]="isSelected(file2)" (click)="select(this.file2)" [src]="snapshot2">
+        <img *ngIf="snapshot3" [class.selected]="isSelected(file3)" (click)="select(this.file3)" [src]="snapshot3">
+        <img *ngIf="snapshot4" [class.selected]="isSelected(file4)" (click)="select(this.file4)" [src]="snapshot4">
+    </ng-container>
+    <ng-container *ngIf="!hasPreview()">
+        <div class="fx-center-items u-fh u-fh">
+            Generating snapshots...
+        </div>
+    </ng-container>
+</div>

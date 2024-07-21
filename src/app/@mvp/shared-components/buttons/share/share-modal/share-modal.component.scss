@@ -1,0 +1,17 @@
+@import 'src/variables.scss';
+
+input.embed {
+  background: $papelGrey2;
+  border: 1px solid black;
+  width: 85%;
+  height: 30px;
+  color: $papelWhite0;
+}
+
+p.copy {
+  display: inline-flex;
+  margin-left: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+

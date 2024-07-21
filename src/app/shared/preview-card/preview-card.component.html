@@ -1,0 +1,34 @@
+<div (click)="cardClicked()">
+    <div *ngIf="type === 'video'" class="card">
+        <app-video-chip [videoType]="video.videoType"></app-video-chip>
+        <div class="video-snapshot-container">
+            <img class="video-snapshot" src="{{video.snapShotUrl}}" alt="">
+            <span *ngIf="video.duration > 0" class="video-time">{{secondsToHms(video.duration)}}</span>
+        </div>
+        <div class="details">
+            <div class="avatar">
+                <img src="{{video.roomAvatarUrl}}" alt="">
+            </div>
+            <div class="video-desc">
+                <h3>{{video.title}}</h3>
+                <span *ngIf="video.earnings > 0">
+                    <img src="../../../../../../assets/logos/syouicon.png" alt="">
+                    {{video.earnings}} (${{solstreamToDollar(video.earnings)}})
+                </span>
+                <span>{{video.roomName}} <app-premium-tick [isVerified]="video.roomPremium"></app-premium-tick> • {{video.time | createDateFormat}} • {{video.views}} views</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="no-lines" (click)="cardClicked()">
+    <div *ngIf="type === 'pops'" class="card">
+        <img class="pops-snapshot" src="{{video.snapShotUrl}}" alt="">
+        <div class="details">
+            <div class="video-desc">
+                <h3>{{video.title}}</h3>
+                <span>{{video.roomName}}
+                    <app-premium-tick [isVerified]="video.roomPremium"></app-premium-tick> • {{video.time | createDateFormat}} • {{video.views}} views</span>
+            </div>
+        </div>
+    </div>
+</div>

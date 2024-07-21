@@ -1,0 +1,24 @@
+.partners-banner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  margin-top: 0px;
+  //box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+
+@media (max-width: 481px) {
+  .partners-banner {
+    margin-top: 20px;
+    width: 90%;
+  }
+}
+
+.title-partners {
+  display: block;
+  margin-left: auto;
+  text-align: center;
+  margin-right: auto;
+  margin-bottom: 0;
+}

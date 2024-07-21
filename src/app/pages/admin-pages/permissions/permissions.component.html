@@ -1,0 +1,52 @@
+<div class="app-container">
+    <div class="search-panel" style="padding: 1rem; max-width: 300px">
+        <mat-form-field style="margin: 0.5rem;" appearance="outline">
+            <input [disabled]="false" [formControl]="search" matInput placeholder="account/room name">
+        </mat-form-field>
+    </div>
+    <div>
+        <div class="fx-center-items u-pt-10" *ngIf="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!loading">
+        <div *ngFor="let account of accounts">
+            <div class="user" [class.current-user]="isCurrentUser(account.user.username)"
+                 style="width: 98%; display: flex; justify-content: space-between">
+                <div class="fx-row">
+                    <div class="fx-column">
+                        <div>Room/Account name:<br> {{account.roomName}}</div>
+                        <div>Room/Account title: <br>{{account.roomTitle}}
+                            <app-premium-tick [isVerified]="account.premium"></app-premium-tick>
+                        </div>
+                        <div>{{account.createDate}}</div>
+                        <div>{{account.ipAddress}}</div>
+                        <div>Total content: {{account.totalContentCount}}</div>
+                    </div>
+                    <div class="fx-column">
+                        <div>User name: <br>{{account.user.username}}</div>
+                        <div>User role: <br>{{account.user.role}}</div>
+                    </div>
+                    <div class="fx-column">
+                        <div>User created: <br>{{account.user.createDate}}</div>
+                        <div>User last action: <br>{{account.user.lastAction}}</div>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field style="width: 140px; margin-top:0.5rem; margin-bottom: -1rem; margin-right: 1rem;"
+                                    appearance="fill">
+                        <mat-label>new role</mat-label>
+                        <mat-select [disabled]="true" (selectionChange)="roleUpdated(account.user, $event)">
+                            <mat-option *ngFor="let role of roles" [value]="role">
+                                {{role}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div>
+                        <button (click)="delete(account.user)" disabled mat-raised-button color="warn">delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

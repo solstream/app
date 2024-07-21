@@ -1,0 +1,51 @@
+<div style="height: 100%" class="fx-container fx-start fx-row">
+    <div id="channelViewScrollContainer" class="stream-container column">
+        <i *ngIf="hideChatWindow === true" (click)="hideChatWindow = false"
+           class="fa-solid fa-arrow-right-to-bracket chat-toggle"></i>
+        <app-channel-view-profile id="ss" (conferenceCreated)="conferenceAlias = $event" (showChat)="showChat = $event"
+                                  [showTitle]="showTitle"></app-channel-view-profile>
+        <h4>
+            <span *ngIf="otherChannelVideos?.length > 0">
+               Content you might like
+            </span>
+        </h4>
+        <div class="other-content-container">
+            <div id="show-heroes-adv" class="video-card-wrapper-m show-heroes-adv"></div>
+            <div class="row">
+                <div *ngFor="let video of otherChannelVideos" class="column-4">
+                    <app-preview-card [video]="video"></app-preview-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="rightContainer" [ngClass]="{ 'collapsed': hideChatWindow }"
+         style="display: flex; justify-content: flex-end; flex-direction: column"
+         class="chart-container column">
+        <div id="audio-controls-container" class="audio-controls-container" *ngIf="showChat && conferenceAlias">
+            <div class="fx-center-items fx-column">
+                <app-channel-view-participants [alias]="conferenceAlias"></app-channel-view-participants>
+                <div *ngIf="showAudioControls" class="fx-center-items fx-column">
+                    <div class="padding-top-16">
+                        <button *ngIf="isMuted === true" (click)="unmute()" class="standard-button-purple"
+                                mat-raised-button>
+                            Unmute
+                        </button>
+                        <button *ngIf="isMuted === false" (click)="mute()" class="standard-button-purple"
+                                mat-raised-button>
+                            Mute
+                        </button>
+                        <button (click)="leave()" class="standard-button-purple" mat-raised-button>
+                            Leave
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [hidden]="hideChatWindow" id="comments" style="height: 100%;">
+            <app-comments (hideChatWindow)="hideChatWindow = $event" *ngIf="!showChat"
+                          [showTitle]="showTitle"></app-comments>
+            <app-chat *ngIf="showChat" [userName]="getChatUserName()"></app-chat>
+        </div>
+    </div>
+</div>

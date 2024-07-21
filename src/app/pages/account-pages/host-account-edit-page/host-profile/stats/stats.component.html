@@ -1,0 +1,30 @@
+<!--<h4>Streaming time: 123 minutes</h4>-->
+<!--<div class="stat">Followers: 90</div>-->
+<div *ngIf="stats?.statsTotal?.totalMinutesStreamed" class="stat">Total live time: {{stats?.statsTotal?.totalMinutesStreamed}}min</div>
+<div *ngIf="room?.views" class="stat">Views: {{room.views}}</div>
+<div class="stat">Stream reached: {{stats?.streamViews}}</div>
+<!--<mat-form-field>-->
+<!--    <mat-chip-list #chipList>-->
+<!--        <mat-chip>Followers: 90</mat-chip>-->
+<!--        <mat-chip>Total live time: {{stats.statsTotal.totalMinutesStreamed}}min</mat-chip>-->
+<!--    </mat-chip-list>-->
+<!--    <input [matChipInputFor]="chipList">-->
+<!--</mat-form-field>-->
+
+<!--<canvas baseChart width="200" height="200"-->
+<!--        [datasets]="lineChartData"-->
+<!--        [labels]="lineChartLabels"-->
+<!--        [options]="lineChartOptions"-->
+<!--        [type]="lineChartType"-->
+<!--        [legend]="lineChartLegend"-->
+<!--&gt;</canvas>-->
+
+
+<!--<fusioncharts-->
+<!--        [width]="width"-->
+<!--        [height]="height"-->
+<!--        [type]="type"-->
+<!--        [dataFormat]="dataFormat"-->
+<!--        [dataSource]="dataSource"-->
+<!--&gt;-->
+<!--</fusioncharts>-->

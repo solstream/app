@@ -1,0 +1,44 @@
+<div #scrollToTop *ngIf="channel">
+    <div  class="host-room-content">
+        <div id="channelViewVideoContainer">
+            <div id="videoPlayer">
+                <div *ngIf="channelContentLoaded" [class.hidden]="showSpinner" class="channel-profile-video-container">
+<!--                    <app-earn-progress *ngIf="showEarningProgress()" [videoId]="videoInPlayer.id" [videoState]="videoState"></app-earn-progress>-->
+                    <div class="video">
+                        <div *ngIf="isLive || videoInPlayer.videoType === videoTypeObsLive" class="live-chip-container">
+                            <app-live-chip></app-live-chip>
+                        </div>
+                        <app-video-js-player (videoPlaying)="onPlay($event)" (videoPaused)="onPause($event)" [video]="videoInPlayer"></app-video-js-player>
+                        <!-- NOTE current app-live-stream-view must destroyed and recreated to connect dolby live-stream -->
+                        <!-- NOTE channelContentLoaded line 5 property will destroy and recreate -->
+                        <div *ngIf="isLive" class="video">
+                            <app-live-stream-view (conferenceCreated)="onConferenceCreated($event)" (videoEvent)="updateVideoState($event)" (conferenceEnded)="liveEnded()" (joinFailed)="liveEnded()" [room]="channel"></app-live-stream-view>
+                        </div>
+                    </div>
+
+                </div>
+                <div *ngIf="showSpinner" class="channel-profile-video-container">
+                </div>
+                <div class="u-fw">
+                    <app-video-title *ngIf="channel && !isLive"
+                                     [showTitle]="showTitle"
+                                     [video]="videoInPlayer"
+                                     [room]="channel"></app-video-title>
+                    <app-video-title *ngIf="channel && isLive"
+                                     [isLive]="isLive"
+                                     [showTitle]="showTitle"
+                                     [video]="liveStream"
+                                     [room]="channel"></app-video-title>
+                </div>
+            </div>
+        </div>
+        <app-channel-view-live-recordings-list [liveRecordings]="liveRecordings"
+                                       (videoClicked)="videoCardClicked($event.video)">
+        </app-channel-view-live-recordings-list>
+        <app-channel-view-video-list [uploadedVideos]="uploadedVideos"
+                                     (videoClicked)="videoCardClicked($event.video)">
+        </app-channel-view-video-list>
+        <app-channel-view-pops-list [uploadedVideos]="pops" (videoClicked)="videoCardClicked($event.video)"></app-channel-view-pops-list>
+    </div>
+</div>
+

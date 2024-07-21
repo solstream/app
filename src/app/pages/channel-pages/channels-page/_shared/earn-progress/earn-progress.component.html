@@ -1,0 +1,36 @@
+<!-- Logged in -->
+<div *ngIf="isLoggedIn()" class="card-wrapper logged-in">
+  <ng-template [ngTemplateOutlet]="progressColumn"></ng-template>
+</div>
+
+<!-- Logged out -->
+<div *ngIf="!hideEarnProgress && !isLoggedIn()" class="card-wrapper">
+  <div (click)="goToLogin()" class="card">
+    <div (click)="close($event)" class="close">x</div>
+    <div class="flex-row">
+      <ng-template [ngTemplateOutlet]="progressColumn"></ng-template>
+      <div class="flex-column title fx-center-items">
+        <span class="title">Watch & earn</span>
+      </div>
+    </div>
+    <div class="login">Login or create an account</div>
+  </div>
+</div>
+
+<!-- Progress circle  -->
+<ng-template #progressColumn >
+  <div class="flex-column progress">
+    <div class="circle">
+      <img class="logo" [ngClass]="{'show': tokenEarned}" src="/assets/logos/solstreambeta.png" alt="">
+      <div class="earned-solstream" [ngClass]="{'hide': tokenEarned}" >
+        <span *ngIf="tokensEarned === 0">0.000</span>
+        <span *ngIf="tokensEarned > 0">{{tokensEarned}}</span>
+        <span class="solstream">solstream</span>
+      </div>
+    </div>
+    <svg width="55" height="55" viewBox="0 0 55 55">
+      <circle class="bg" cx="27" cy="27" r="24" fill="none" stroke="" stroke-width="4" />
+      <circle class="percent" cx="27" cy="27" r="24" fill="none" stroke="#DAC7E4" stroke-width="5"  pathLength="100" [ngStyle]="{'stroke-dashoffset': '-' + progress + 'px', 'stroke-dasharray': '100' }" />
+    </svg>
+  </div>
+</ng-template>

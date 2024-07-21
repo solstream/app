@@ -1,0 +1,30 @@
+.logo-for-twitter {
+  width: 100px;
+  vertical-align:middle;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.container .item:nth-child(2){ /*Only second item padding and center text*/
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.adv-text {
+  font-size: 20px;
+}
+.button-follow {
+  margin-left: 20px;
+}

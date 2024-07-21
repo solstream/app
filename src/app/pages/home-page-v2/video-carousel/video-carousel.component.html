@@ -1,0 +1,55 @@
+<div *ngIf="!isMob && isReady" class="fx-row fx-center-items">
+    <button mat-button (click)="previousClick()">
+        <fa-icon [icon]="iconLeft" class="fa-dark"></fa-icon>
+    </button>
+    <div class="stream-card-container">
+        <div class="stream-card-container">
+            <div #myDOMElement1 class="video-carousel top-stream-card">
+                <div class="responsive-video-container top-stream-card__video">
+                    <app-video-js-player [isCarousel]="true" [video]="carouselVideoPlaying"></app-video-js-player>
+                    <div *ngIf="showDolbyConference() && unhideVideo"
+                         style="position: absolute; margin: 1rem; top: 0;">
+                        <app-live-chip></app-live-chip>
+                    </div>
+                    <app-live-stream-view (conferenceEnded)="failedJoin()" (joinFailed)="failedJoin()"
+                                          [class.hidden]="!unhideVideo"
+                                          *ngIf="showDolbyConference() && currentVideoRoom" [carousel]="true"
+                                          (joined)="playStart($event)" [room]="currentVideoRoom"></app-live-stream-view>
+                </div>
+                <app-carousel-card-info [title]="carouselVideoPlaying?.title" [channel]="currentVideoRoom">
+                </app-carousel-card-info>
+            </div>
+        </div>
+    </div>
+    <button mat-button (click)="nextClick()">
+        <fa-icon [icon]="iconRight" class="fa-dark"></fa-icon>
+    </button>
+</div>
+<div *ngIf="isMob" class="fx-column fx-center-items">
+    <div class="top-stream-card_mob">
+        <div #myDOMElement class="top-stream-card_mob__video" style="min-height: 54vw;">
+            <button class="previous" mat-button (click)="previousClick()">
+                <fa-icon [icon]="iconLeft" class="fa-dark previous"></fa-icon>
+            </button>
+            <!--            <video *ngIf="currentVideo" style="width: 100%;" controls playsinline autoplay>-->
+            <!--                <source [src]="carouselVideoPlaying.videoFileUrl">-->
+            <!--            </video>-->
+            <app-video-js-player style="width:100%" [isCarousel]="false"
+                                 [video]="carouselVideoPlaying"></app-video-js-player>
+            <button class="next" mat-button (click)="nextClick()">
+                <fa-icon [icon]="iconRight" class="fa-dark next"></fa-icon>
+            </button>
+        </div>
+    </div>
+    <div style="display: flex;
+                justify-content: space-between;
+                width: 100%;">
+
+        <div style="display: flex; flex: 1 1 auto">
+            <app-room-data2 *ngIf="currentVideo" [enableNavigation]="true" [showLiveStatus]="false"
+                            [room]="currentVideoRoom"></app-room-data2>
+        </div>
+
+    </div>
+</div>
+

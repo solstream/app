@@ -1,0 +1,47 @@
+
+trigger:
+- master
+
+pool: buildagent
+
+stages:
+  - stage: ptv_app_release
+    jobs:
+      - job: 
+        steps:
+          - task: NodeTool@0
+            displayName: set node 15.8
+            inputs:
+              versionSpec: 15.8.0
+          - task: Npm@1
+            displayName: npm install
+            inputs:
+              workingDir: $(System.DefaultWorkingDirectory)
+              verbose: true
+          - task: Npm@1
+            displayName: npm run build
+            inputs:
+              command: custom
+              workingDir: '$(System.DefaultWorkingDirectory)'
+              verbose: true
+              customCommand: 'run build:prod'
+          - task: Npm@1
+            displayName: clean up
+            inputs:
+              command: custom
+              workingDir: '$(System.DefaultWorkingDirectory)'
+              verbose: true
+              customCommand: 'prune --production'
+          - task: Docker@2
+            displayName: build docker image
+            inputs:
+              containerRegistry: containers
+              repository: steam
+              Dockerfile: Dockerfile
+
+          - task: Docker@2
+            displayName: push docker image
+            inputs:
+              containerRegistry: containers
+              repository: steam
+              Dockerfile: Dockerfile

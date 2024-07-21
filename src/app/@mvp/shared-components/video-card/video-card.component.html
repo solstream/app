@@ -1,0 +1,87 @@
+<div *ngIf="!compact && !homePage" class="video-card-container pointer" >
+    <div (click)="cardClicked()" class="parent">
+        <div class="video-card container1 child" [class.container2]="showRoomData" [class.pop] = "video.videoType === videoType2.POP"
+             [style.background-image]="getBackgroundImageUrl()">
+            <div class="delete-btn-container">
+<!--                <app-nft-icon-button *ngIf="editable" (buttonClicked)="mintNFT()"></app-nft-icon-button>-->
+                <app-delete-icon-button *ngIf="editable" (buttonClicked)="delete()"></app-delete-icon-button>
+            </div>
+            <div class="chip-container">
+                <ng-container *ngIf="editable">
+                    <app-available-soon-chip *ngIf="isVideoAndHasUrl()"></app-available-soon-chip>
+                </ng-container>
+                <ng-container *ngIf="showType && video?.videoType !== videoTypeLive">
+                    <app-record-chip *ngIf="showType && video?.videoType == videoTypesPodcast"></app-record-chip>
+<!--                    <app-video-chip *ngIf="showType && video?.videoType == videoTypeVideo"></app-video-chip>-->
+                </ng-container>
+                <ng-container *ngIf="video?.videoType === videoTypeLive || video?.videoType === videoTypeObsLive">
+                    <app-live-chip></app-live-chip>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <app-video-data [showLiveStatus]="false" (click)="cardClicked()"
+                    [video]="video"
+                    [routerLink]="getLink()"
+                    style="height: 60px; cursor: pointer"></app-video-data>
+</div>
+<a class="clickable-card"
+        *ngIf="homePage === true" href="{{videoRouting}}">
+    <div class="parent">
+        <div class="video-card container1 child" [class.container2]="showRoomData"  [class.pop] = "video.videoType === videoType2.POP"
+             [style.background-image]="getBackgroundImageUrl()">
+            <div class="delete-btn-container">
+                <app-nft-icon-button *ngIf="editable" (buttonClicked)="mintNFT()"></app-nft-icon-button>
+                <app-delete-icon-button *ngIf="editable" (buttonClicked)="delete()"></app-delete-icon-button>
+            </div>
+            <div class="chip-container">
+                <ng-container *ngIf="editable">
+                    <app-available-soon-chip *ngIf="isVideoAndHasUrl()"></app-available-soon-chip>
+                </ng-container>
+                <ng-container *ngIf="showType && video?.videoType !== videoTypeLive">
+                    <app-record-chip *ngIf="showType && video?.videoType == videoTypesPodcast"></app-record-chip>
+<!--                    <app-video-chip *ngIf="showType && video?.videoType == videoTypeVideo"></app-video-chip>-->
+                </ng-container>
+                <ng-container *ngIf="video?.videoType === videoTypeLive || video?.videoType === videoTypeObsLive">
+                    <app-live-chip></app-live-chip>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <app-video-data [showLiveStatus]="false"
+                    [video]="video"
+                    [routerLink]="getLink()"
+                    style="height: 60px; cursor: pointer"></app-video-data>
+</a>
+<div (click)="cardClicked()" style="width: 100%; display: flex" class="papel-black2">
+    <div *ngIf="compact" style="display: block; width: 45%; padding:2px">
+        <div class="video-card-container" >
+            <div class="video-card container1 child" [class.container2]="showRoomData"  [class.pop] = "video.videoType === videoType2.POP"
+                 [style.background-image]="getBackgroundImageUrl()">
+                <div class="delete-btn-container">
+                    <app-delete-icon-button *ngIf="editable" (buttonClicked)="delete()"></app-delete-icon-button>
+                </div>
+                <div class="chip-container">
+                    <ng-container *ngIf="editable">
+                        <app-available-soon-chip *ngIf="isVideoAndHasUrl()"></app-available-soon-chip>
+                    </ng-container>
+                    <ng-container *ngIf="showType && video?.videoType !== videoTypeLive">
+                        <app-record-chip *ngIf="video?.videoType === videoTypesPodcast"></app-record-chip>
+                        <app-video-chip
+                                *ngIf="video?.videoType === videoTypeVideo"></app-video-chip>
+                    </ng-container>
+                    <ng-container *ngIf="video?.videoType === videoTypeLive">
+                        <app-live-chip></app-live-chip>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-video-data *ngIf="compact" [showLiveStatus]="false"
+                    [video]="video"
+                    style="cursor: pointer; height: 100%; width: 55%;"></app-video-data>
+<!--    <button (click)="mintNFT()"-->
+<!--            class="mint-video light-button" *ngIf="editable">-->
+<!--        MINT AS NFT</button>-->
+<!--    <app-nft-modal></app-nft-modal>-->
+</div>

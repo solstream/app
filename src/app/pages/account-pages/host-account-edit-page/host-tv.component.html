@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+<div *ngIf="!mob.isMobile()" class="">
+    <div *ngIf="room" class="fx-container fx-start fx-row" style="height: calc(100vh - 50px);">
+        <div class="channel-container column">
+            <app-wallet [room]="room"></app-wallet>
+        </div>
+        <div class="column stream-container">
+            <app-host-profile [hostRoom]="room"></app-host-profile>
+        </div>
+        <div class="column chart-container">
+            <app-host-stats *ngIf="room" [room]="room"></app-host-stats>
+        </div>
+    </div>
+</div>
+<div class="mob" *ngIf="mob.isMobile()">
+    <div *ngIf="room">
+            <app-host-profile [hostRoom]="room"></app-host-profile>
+            <app-host-stats [room]="room"></app-host-stats>
+    </div>
+</div>
+

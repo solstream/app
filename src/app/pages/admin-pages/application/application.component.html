@@ -1,0 +1,6 @@
+<div class="side-nav-content fx-center-items">
+    <div>
+        <mat-slide-toggle [(ngModel)]="val" (change)="change($event)" color="warn">Maintenance mode</mat-slide-toggle>
+        <button (click)="save()" [disabled]="!changed" style="border-radius: 50px; margin-left: 1rem" mat-raised-button color="warn">Save</button>
+    </div>
+</div>

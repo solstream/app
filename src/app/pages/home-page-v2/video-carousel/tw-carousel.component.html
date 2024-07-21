@@ -1,0 +1,172 @@
+<div *ngIf="isMob" class="fx-column fx-center-items">
+    <div class="top-stream-card_mob">
+        <div #myDOMElement class="top-stream-card_mob__video" style="min-height: 54vw;">
+            <button class="previous" mat-button (click)="previousClick()">
+                <fa-icon [icon]="iconLeft" class="fa-dark previous"></fa-icon>
+            </button>
+            <!--            <video *ngIf="currentVideo" style="width: 100%;" controls playsinline autoplay>-->
+            <!--                <source [src]="carouselVideoPlaying.videoFileUrl">-->
+            <!--            </video>-->
+            <app-video-js-player style="width:100%" [isCarousel]="false"
+                                 [video]="carouselVideoPlaying"></app-video-js-player>
+            <button class="next" mat-button (click)="nextClick()">
+                <fa-icon [icon]="iconRight" class="fa-dark next"></fa-icon>
+            </button>
+        </div>
+    </div>
+    <div style="display: flex;
+                justify-content: space-between;
+                width: 100%;">
+
+        <div style="display: flex; flex: 1 1 auto">
+            <app-room-data2 *ngIf="currentVideo" [enableNavigation]="true" [showLiveStatus]="false"
+                            [room]="currentVideoRoom"></app-room-data2>
+        </div>
+
+    </div>
+</div>
+
+
+<!--<div *ngIf="!isMob">-->
+<!--    <div class="carousel"><i class="fas fa-chevron-left carousel__chevron"></i>-->
+<!--        <div class="carousel__content">-->
+<!--            <div class="carousel__video tertiary tertiary-left">-->
+<!--                <div class="inactive"></div> &lt;!&ndash;&ndash;&gt; <img src="{{carouselItems[0].snapShotUrl}}"-->
+<!--                                                          alt="" class="carousel__video-picture"> &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;</div>-->
+<!--            <div class="carousel__video secondary secondary-left">-->
+<!--                <div class="inactive"></div> &lt;!&ndash;&ndash;&gt; <img src="{{carouselItems[1].snapShotUrl}}"-->
+<!--                                                          alt="" class="carousel__video-picture"> &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;</div>-->
+<!--            <div class="carousel__video main">-->
+<!--                <div class="inactive"></div>-->
+<!--                <div class="carousel__overlay">-->
+<!--                    <div class="carousel__overlay-top">-->
+<!--                        <div class="carousel__overlay-picture">-->
+<!--                            <img-->
+<!--                                    src="{{currentVideo.roomAvatarUrl}}"-->
+<!--                                    alt=""></div>-->
+<!--                        <div class="carousel__overlay-text">-->
+<!--                            <div class="carousel__overlay-name">-->
+<!--                                {{currentVideo.roomName}}-->
+<!--                            </div>-->
+<!--                            <div class="carousel__overlay-title">-->
+<!--                                {{currentVideo.roomTitle}}-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash;                            <div class="carousel__overlay-views">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                {{channel.bioText}}&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                        <div class="carousel__overlay-live">-->
+<!--                            &lt;!&ndash;                            &ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <div class="record-button"></div>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <span class="u-inline-text">LIVE&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            </span>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            &ndash;&gt;-->
+<!--                            <div *ngIf="showDolbyConference() && unhideVideo"-->
+<!--                                 style="position: absolute; margin: 1rem; top: 0;">-->
+<!--                                <app-live-chip></app-live-chip>-->
+<!--                            </div>-->
+<!--                            <app-video-chip [videoType]="currentVideo?.videoType"></app-video-chip>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <i class="fas fa-play big-play"></i>-->
+<!--                    &lt;!&ndash;                    <div class="carousel__overlay-bottom"><i class="fas fa-play"></i> <i&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            class="fas fa-volume-up carousel__overlay-icon carousel__overlay-icon&#45;&#45;volume"></i> <i&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            class="fas fa-cog carousel__overlay-icon carousel__overlay-icon&#45;&#45;settings"></i> <i&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            class="fas fa-arrows-alt-v carousel__overlay-icon carousel__overlay-icon&#45;&#45;fullscreen"></i></div>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <img src="{{currentVideo.snapShotUrl}}" alt="" class="carousel__video-picture">-->
+<!--                &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;</div>-->
+<!--            <div-->
+<!--                    class="carousel__video secondary secondary-right">-->
+<!--                <div class="inactive"></div> &lt;!&ndash;&ndash;&gt; <img src="{{carouselItems[3].snapShotUrl}}"-->
+<!--                                                          alt="" class="carousel__video-picture"> &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;</div>-->
+<!--            <div class="carousel__video tertiary tertiary-right">-->
+<!--                <div class="inactive"></div> &lt;!&ndash;&ndash;&gt; <img src="{{carouselItems[4].snapShotUrl}}" alt="" class="carousel__video-picture">-->
+<!--                &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <i class="fas fa-chevron-right carousel__chevron"></i></div>-->
+<!--</div>-->
+<!---->
+
+<div *ngIf="!isMob">
+    <div class="carousel">
+        <i class="fas fa-chevron-left carousel__chevron"
+           (click)="changeVideo('right')"></i>
+        <div class="carousel__content">
+            <div class="carousel__video" [className]="video.position" [ngClass]="'carousel__video'"
+                 *ngFor="let video of videos; let i = index">
+                <div (click)="changeVideo(0, video.position)" class="inactive" *ngIf="!video.active"></div>
+
+                <div class="carousel__overlay-background" *ngIf="video.active && video.position == 'carousel__video main'">
+                <div class="carousel__overlay" *ngIf="video.active && video.position == 'carousel__video main'">
+                    <div class="carousel__overlay-top pointer"  (click)="goToRoom(video)">
+                        <div class="carousel__overlay-picture">
+                            <img [src]="video.roomAvatarUrl || '/assets/icons/login-btn.png'">
+                        </div>
+                        <div class="carousel__overlay-text">
+                            <div class="carousel__overlay-title">
+                                {{video.roomTitle}}
+                                <app-premium-tick class="carousel-tick" [isVerified]="true"></app-premium-tick>
+                            </div>
+                            <div class="carousel__overlay-name">
+                                {{video.roomName}}
+                            </div>
+                            <div class="carousel__overlay-bio">
+                                {{video?.bioText}}
+                            </div>
+
+                            <!--                            <div class="carousel__overlay-topic mat-chip-list-wrapper stream-topic inline-block topic-badge">-->
+<!--&lt;!&ndash;                                playing Music for 999999 viewers&ndash;&gt;-->
+<!--                                {{carouselVideoPlaying.roomTopic}}-->
+<!--                            </div>-->
+                        </div>
+<!--                        <div *ngIf="showDolbyConference() && unhideVideo" class="carousel__overlay-live">-->
+<!--                            <div class="record-button"></div>-->
+<!--                            <span class="u-inline-text">LIVE</span>-->
+<!--                        </div>-->
+                        <div class="carousel__overlay-live">
+                            <app-video-chip [isCarousel]="true" [videoType]="video.videoType"></app-video-chip>
+                        </div>
+
+                    </div>
+<!--                    <i class="fas fa-play big-play" (mouseenter)="video.active = !video.active" (mouseleave)="video.active = !video.active"-->
+<!--                       (click)="video.active = !video.active">-->
+<!--                    </i>-->
+<!--                    <div class="carousel__overlay-bottom">-->
+<!--                        <i class="fas fa-play"-->
+<!--                           (click)="video.active = !video.active">-->
+<!--                        </i>-->
+<!--                        <i (mouseenter)="video.active = !video.active" (mouseleave)="video.active = !video.active"-->
+<!--                        (click)="video.active = !video.active"-->
+<!--                                class="fas fa-volume-up carousel__overlay-icon carousel__overlay-icon&#45;&#45;volume"></i>-->
+<!--                        <i (mouseenter)="video.active = !video.active" (mouseleave)="video.active = !video.active"-->
+<!--                           (click)="video.active = !video.active"-->
+<!--                                class="fas fa-cog carousel__overlay-icon carousel__overlay-icon&#45;&#45;settings"></i>-->
+<!--                        <i (mouseenter)="video.active = !video.active" (mouseleave)="video.active = !video.active"-->
+<!--                           (click)="video.active = !video.active"-->
+<!--                                class="fas fa-arrows-alt-v carousel__overlay-icon carousel__overlay-icon&#45;&#45;fullscreen"></i>-->
+<!--                    </div>-->
+
+                </div>
+                </div>
+                <img
+                        *ngIf="!video.active"
+                        src="{{video.snapShotUrl}}"
+                        alt=""
+                        class="carousel__video-picture"
+                >
+
+                <app-video-js-player *ngIf="video.active" style="width:100%" [hoverCarousel]="true"
+                                     [video]="video"></app-video-js-player>
+<!--                <iframe *ngIf="video.active" id="ytplayer" type="text/html" width="100%" height="100%"-->
+<!--                        src="{{video.embed}}"-->
+<!--                        frameborder="0"></iframe>-->
+                <div class="carousel__placeholder-background" *ngIf="video.active"></div>
+            </div>
+        </div>
+        <i class="fas fa-chevron-right carousel__chevron"
+           (click)="changeVideo('left')"></i>
+    </div>
+</div>

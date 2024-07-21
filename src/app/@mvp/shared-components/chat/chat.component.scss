@@ -1,0 +1,125 @@
+@import "../../../../variables";
+
+.chat-send > input {
+  border-radius: 5px;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  border: none;
+  background-color: $papelGray1;
+  color: $papelGrey1;
+}
+
+.chat-title {
+  height: 40px;
+  border-bottom: 1px solid $papelBlack2;
+  display: flex;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+  flex: 0 0 40px;
+}
+//
+//.chat-title-with-close {
+//  height: 40px;
+//  border-bottom: 1px solid $papelBlack2;
+//  display: flex;
+//  color: $papelWhite1;
+//  font-size: 0.85rem;
+//  flex: 0 0 40px;
+//}
+
+.chat-send {
+  padding: 0.5rem;
+  flex: 0 0 80px;
+  justify-content: right;
+}
+
+.chat-send-mob {
+  padding: 0 !important;
+  height: 40px !important;
+  justify-content: right;
+  flex: none;
+}
+
+.chat-message {
+  color: $papelWhite1;
+  padding: 5px 15px 0px 15px;
+}
+
+.chat-messages-mob {
+  overflow: scroll;
+  padding-bottom: 4px;
+  height: calc(70% - 5px);
+}
+
+.chat-messages {
+  overflow: scroll;
+  height: calc(100% - 135px);
+}
+
+.sender-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100px;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+.welcome {
+  height: 20px;
+  margin: 10px;
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  justify-content: center;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: $papelGray1 !important;
+  color: #666666 !important;
+}
+
+.chat-send > button {
+  align-self: flex-end;
+  width: 100%;
+  margin: 3px;
+  margin-top: 7px;
+  margin-right: 0;
+  border-radius: 5px;
+}
+
+.current-user {
+  color: $papelPink;
+}
+
+.chat-area {
+  overflow-x: hidden;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  resize: none;
+}
+
+.textarea-container {
+  position: relative;
+}
+
+.textarea-container textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.textarea-container .picker {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  color: $papelGrey2;
+  cursor: pointer;
+}
+
+.delete, .ban {
+  cursor: pointer;
+  padding-left: 4px;
+}
+

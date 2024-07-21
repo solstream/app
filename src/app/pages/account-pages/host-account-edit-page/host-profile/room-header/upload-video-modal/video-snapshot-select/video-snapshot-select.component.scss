@@ -1,0 +1,17 @@
+@import "../../../../../../../../variables";
+
+img {
+  width: 23%;
+  margin: 3px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+img:hover {
+  border: 1px solid $papelPurple1;
+  margin: 3px!important;
+}
+img.selected {
+  border: 2px solid $papelPurple1;
+  margin: 2px!important;
+}

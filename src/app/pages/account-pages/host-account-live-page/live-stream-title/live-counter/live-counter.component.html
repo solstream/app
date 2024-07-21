@@ -1,0 +1,5 @@
+<div class="fx-row fx-center-items">
+    <div class="live-circle-l"></div>
+    <div style="margin-left: 1rem">Live {{displayTime}}</div>
+    <div class="recording-label" *ngIf="(scx.recordStream$ | async)">Recording..</div>
+</div>

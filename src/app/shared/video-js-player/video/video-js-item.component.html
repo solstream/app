@@ -1,0 +1,10 @@
+<div [class.vjs-carousel]="isCarousel" class="border-radius"
+     [class.vjs-fw]="!isCarousel"
+>
+    <video id="gtvVideoPlayer" class="video-js border-radius"
+           [class.vjs-carousel]="isCarousel"
+           [class.vjs-fw]="!isCarousel"
+           (play)="onPlay($event)" (pause)="onPause($event)">
+    </video>
+</div>
+

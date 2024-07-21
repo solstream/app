@@ -1,0 +1,151 @@
+@import "../../../../../../variables";
+
+.chat-send > input {
+  border-radius: 5px;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  border: none;
+  background-color: $papelGray1;
+  color: $papelGrey1;
+}
+
+.chat-title {
+  height: 40px;
+  border-bottom: 1px solid $papelBlack2;
+  display: flex;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+  flex: 0 0 40px;
+}
+
+.chat-send {
+  padding: 0.5rem;
+  flex: 0 0 80px;
+  justify-content: right;
+}
+
+.chat-send-mob {
+  padding: 0 !important;
+  height: 40px !important;
+  justify-content: right;
+  flex: none;
+}
+
+.chat-messages-mob {
+  overflow: scroll;
+  padding-bottom: 4px;
+  height: calc(70% - 5px);
+}
+
+.chat-messages {
+  overflow: scroll;
+  height: calc(100% - 135px);
+}
+
+.chat-message {
+  display: flex;
+  color: $papelWhite1;
+  padding: 5px 15px 0px 15px;
+}
+
+.sender-avatar {
+  flex: 0;
+  margin: 0 10px 0 0;
+}
+
+.comment {
+  flex: 1;
+  position: relative;
+  margin: 5px 0;
+}
+
+.send-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.sender-name {
+  font-weight: bold;
+  color: $papelRed;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100px;
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 5px;
+}
+
+.create-date {
+  display: inline-block;
+  color: #606060;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.comment-content {
+  display: block;
+  margin: 2px 0;
+}
+
+.welcome {
+  height: 20px;
+  margin: 10px;
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  justify-content: center;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: $papelGray1 !important;
+  color: #666666 !important;
+}
+
+.chat-send > button {
+  align-self: flex-end;
+  width: 100%;
+  margin: 3px;
+  margin-top: 7px;
+  margin-right: 0;
+  border-radius: 5px;
+}
+
+.current-user {
+  color: $papelPink;
+}
+
+.chat-area {
+  overflow-x: hidden;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  resize: none;
+}
+
+.textarea-container {
+  position: relative;
+}
+
+.textarea-container textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-right: 42px;
+}
+
+.textarea-container .picker {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+
+  color: $papelGrey2;
+  cursor: pointer;
+}
+
+.delete-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}

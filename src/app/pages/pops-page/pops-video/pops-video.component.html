@@ -1,0 +1,5 @@
+<video (click)="videoEl.paused ? playVideo() : pauseVideo()" src="{{popVideo.videoFileUrl}}"></video>
+<div class="pop-details">
+    <p>{{popVideo.title}}</p>
+    <p (click)="navigateToRoom()"><img class="avatar" src="{{popVideo.roomAvatarUrl}}">{{popVideo.roomTitle}}</p>
+</div>

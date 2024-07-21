@@ -1,0 +1,42 @@
+.interact-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.button-space {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.single-action {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button {
+  margin: 0 1em;
+}
+.fa-spinner {
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+  .interaction {
+      width: 100%;
+      margin: 5px;
+  }
+}

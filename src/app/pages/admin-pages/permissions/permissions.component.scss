@@ -1,0 +1,25 @@
+@import "../../../../variables";
+
+.user {
+  border-top: $papelWhite2 1px solid;
+  background-color: $papelBlack2;
+  color: $papelWhite1
+}
+
+.current-user {
+  color: $papelPurple1;
+}
+
+.user div {
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+mat-list-option {
+  border: 1px black solid;
+  height: 100px!important;
+}
+
+.fx-column {
+  display: flex!important;
+}

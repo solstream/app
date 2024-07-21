@@ -1,0 +1,16 @@
+<div class="fx-container">
+    <button *ngIf="!saving"
+            mat-raised-button
+            class="standard-button-purple"
+            (click)="open()">
+        <span class="black-text">CREATE</span>
+    </button>
+
+    <div *ngFor=" let code of invitations">
+        {{code.code}} - {{code.usageLimit}} - {{code.used}} -
+        <app-edit-icon-button (click)="edit(code)"></app-edit-icon-button>
+        <app-delete-icon-button (buttonClicked)="delete(code)"></app-delete-icon-button>
+    </div>
+</div>
+
+

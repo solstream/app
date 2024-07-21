@@ -1,0 +1,24 @@
+<div class="recent-podcasts">
+    <h4>Recent streams</h4>
+    <ng-container *ngIf="podcasts">
+        <div *ngIf="!mob.isMobile()">
+            <div [class.video-card-wrapper-m]="true"
+                 *ngFor="let podcast of podcasts">
+                <app-video-card (deleteVideo)="openModalConfirmRemove(podcast)"
+                                (videoCardClicked)="videoCardClicked($event)"
+                                [video]="podcast"
+                                [showType]="false"
+                                [editable]="true"></app-video-card>
+            </div>
+        </div>
+        <div *ngIf="mob.isMobile()">
+            <div [class.video-card-wrapper-fw]="true" *ngFor="let podcast of podcasts">
+                <app-video-card (deleteVideo)="openModalConfirmRemove(podcast)"
+                                (videoCardClicked)="videoCardClicked($event)"
+                                [video]="podcast"
+                                [showType]="false"
+                                [editable]="true"></app-video-card>
+            </div>
+        </div>
+    </ng-container>
+</div>

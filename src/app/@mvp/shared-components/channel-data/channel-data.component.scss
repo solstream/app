@@ -1,0 +1,82 @@
+@import "src/variables";
+
+.channel-data {
+  color: $papelWhite1;
+}
+
+.channel-data {
+  padding-left: 1rem;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+:host {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.channel-topic {
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  margin-top: 2px;
+}
+
+.channel-name {
+  color: $papelWhite0!important;
+}
+
+.room-information {
+  display:inline-block;
+  float: right;
+}
+
+.navbar-avatar {
+  float: left;
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+}
+
+#alignPhoto {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#profileCompany, #profileName {
+  display:block;
+  width:100%;
+}
+#alignImage {
+  float: left;
+}
+.profileWrapper {
+  float:left;
+}
+/* Below creates a circle for the image passed from the backend */
+
+.wrapper {
+  padding: 20px;
+  font-family: 'Helvetica';
+  text-align: left;
+  position: relative;
+  width: 600px;
+  clear: both;
+}
+//.profileWrapper:after {
+//  content: "";
+//  width: 200px;
+//  height: 0;
+//  border-top: 42px solid transparent;
+//  border-bottom: 42px solid transparent;
+//  border-right: 40px solid white;
+//  /* Tweak this to increase triangles height */
+//  position: absolute;
+//  right: 0;
+//  top: 0;
+//}

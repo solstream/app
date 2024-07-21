@@ -1,0 +1,36 @@
+.reward-card {
+    margin-bottom: 8px;
+    margin-top: 10px;
+    border-radius: 1em;
+    //max-width: 900px;
+}
+
+.reward-card-icon {
+    width: 65%;
+}
+
+.reward-card-footer {
+    background-color: #9244cc;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 2em;
+}
+//@media only screen and (max-width: 600px) {
+//    .reward-card-footer {
+//        height: 3em;
+//    }
+//}
+.reward-card-tokens-number {
+    float: right;
+    position: relative;
+    top: -19px;
+}
+.icon-avatar {
+    height: 50px;
+    width: 50px;
+    flex-shrink: 0;
+    object-fit: cover;
+}

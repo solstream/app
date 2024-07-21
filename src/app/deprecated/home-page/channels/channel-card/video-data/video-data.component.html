@@ -1,0 +1,17 @@
+<div class="video-data">
+    <div class="video-title">{{video.title}}</div>
+    <div class="video-stats">{{video.time | date}} - {{video.views}} views</div>
+    <div class="video-earned">
+        <div *ngIf="video.earnings > 0" >
+            <img src="../../../../../../assets/logos/syouicon.png" alt="">
+            <span> {{video.earnings}} (${{solstreamToDollar(video.earnings)}})</span>
+        </div>
+    </div>
+    <div class="channel-owner">
+        <app-channel-icon [small]="true" [isPremium]="video.roomPremium" [iconUrl]="video.roomAvatarUrl"></app-channel-icon>
+        <div class="channel-owner__title">{{video.roomTitle}}</div>
+        <app-premium-tick [isVerified]="video.roomPremium"></app-premium-tick>
+    </div>
+</div>
+
+

@@ -1,0 +1,12 @@
+<div id="nav-wrapper" [class.desktop-wrapper]="!mob.isMobile()">
+    <ul style="display: flex" class="nav nav-tabs" [ngClass]="{'nav nav-tabs desktop-menu': mob.isMobile() }">
+        <li *ngIf="!isInSearch()" class="active" [class.hover-effect]="mob.isDesktop()"><a data-toggle="tab">Home</a>
+        </li>
+        <li *ngIf="isInSearch()" [class.active]="isActive('all')">
+            <a [routerLink]="'/search'">All</a>
+        </li>
+        <li [class.active]="isActive(topic)" [class.hover-effect]="mob.isDesktop()" *ngFor="let topic of topics">
+            <a [routerLink]="'/search'" [queryParams]="{key: topic}">{{topic}}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,82 @@
+@import "../../../../../../variables";
+
+.stream-card-container {
+  //min-height: 625px;
+}
+
+.top-stream-card {
+
+  box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.38), -12px 0 8px -4px rgba(0, 0, 0, 0.38);
+  margin: 2rem;
+  height: 400px;
+  display: flex;
+
+  &__video {
+  }
+
+  &__info-card {
+    width: 200px;
+    height: 100%;
+    border-left: 1px solid $papelWhite0;
+    &__bio {
+      font-size: 0.75rem;
+      color: $papelWhite0;
+      padding: 1rem;
+      flex: 1 1 auto
+    }
+    &__qr {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+  }
+}
+
+fa-icon {
+  font-size: 2rem;
+}
+
+
+.top-stream-card_mob {
+
+  box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.38), -12px 0 8px -4px rgba(0, 0, 0, 0.38);
+
+  margin: 0.25rem;
+  width: 98%;
+  //border: 1px solid $papelWhite0;
+  display: flex;
+
+  &__video {
+    flex: 1 1 auto;
+  }
+
+  &__info-card {
+    height: 50px;
+    border-left: 1px solid $papelWhite0;
+    &__bio {
+      font-size: 0.75rem;
+      color: $papelWhite0;
+      padding: 1rem;
+      flex: 1 1 auto
+    }
+    &__qr {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+  }
+}
+
+fa-icon {
+  font-size: 2rem;
+}
+
+.rounded-stream {
+  border-radius: 5px 0 0 5px !important;
+}
+
+.carousel-row {
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(150,150,150,1) 0%, rgba(0,0,0,1) 61%, rgba(0,0,0,1) 100%);
+}

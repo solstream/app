@@ -1,0 +1,40 @@
+<div *ngIf="room" class="room-header-container">
+    <div class="fx-row">
+        <app-channel-data [room]="room"></app-channel-data>
+        <div *ngIf="!mob.isMobile()" class="channel-actions">
+            <app-admin-premium-profile [roomId]="room.id"></app-admin-premium-profile>
+            <app-admin-edit-profile-button [roomId]="room.id"></app-admin-edit-profile-button>
+
+            <button (click)="uploadContentModal()" mat-raised-button class="light-button"
+                    [disabled]="!has50Stream() || hasUploadedAlready()"
+                    [matTooltip]="getUploadButtonTooltip()"
+                    [matTooltipDisabled]="has50Stream() && !hasUploadedAlready()">
+                <span class="white-color">UPLOAD VIDEO</span>
+            </button>
+
+
+            <button (click)="startStreamingDialog()" *ngIf="canGoLive() && isPremium()"
+                    mat-raised-button class="standard-button-purple">
+                <span class="black-text">GO LIVE</span>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="mob.isMobile()" class="u-fw">
+        <div class="channel-actions-mob">
+            <app-admin-premium-profile [roomId]="room.id"></app-admin-premium-profile>
+            <app-admin-edit-profile-button [roomId]="room.id"></app-admin-edit-profile-button>
+            <div>
+                <button (click)="uploadContentModal()" mat-raised-button class="light-button"
+                        [disabled]="!has50Stream() || hasUploadedAlready()"
+                        [matTooltip]="getUploadButtonTooltip()"
+                        [matTooltipDisabled]="has50Stream() && !hasUploadedAlready()">
+                    <span class="white-color">UPLOAD VIDEO</span>
+                </button>
+            </div>
+            <button (click)="startStreamingDialog()" *ngIf="canGoLive() && isPremium()"
+                    mat-raised-button class="standard-button-purple">
+                <span class="black-text">GO LIVE</span>
+            </button>
+        </div>
+    </div>
+</div>

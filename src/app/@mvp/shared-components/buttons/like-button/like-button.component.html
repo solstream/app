@@ -1,0 +1,5 @@
+<div class="like-btn-container">
+    <i class="fa-solid fa-thumbs-up" (click)="toggleLike()" [ngClass]="isLiked() ? 'active' : ''"></i>
+    <span *ngIf="likes > 0">{{likes}}</span>
+</div>
+

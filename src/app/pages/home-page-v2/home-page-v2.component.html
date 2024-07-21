@@ -1,0 +1,90 @@
+<div *ngIf="ready" class="home-page-container">
+    <app-cookies-bar></app-cookies-bar>
+    <app-demo-disclaimer></app-demo-disclaimer>
+    <app-nav-bar></app-nav-bar>
+    <div class="channels-page-container ">
+        <app-sidenav [isHomePage]="true"></app-sidenav>
+        <div class="gradient-container">
+<!--            <div class="welcome-message margin-top-16 margin-mobile fx-center-items">-->
+<!--                <mat-chip class="network-chip pointer">-->
+<!--                    <img class="chain-logo" src="../../../assets/logos/maticlogo.png"/>-->
+<!--                    Polygon Testnet-->
+<!--                </mat-chip>-->
+<!--            </div>-->
+            <app-video-carousel *ngIf="videoCarouselInput && ready && mob.isMobile()"
+                                [carouselInput]="videoCarouselInput"></app-video-carousel>
+
+            <app-tw-carousel *ngIf="videoCarouselInput && ready && !mob.isMobile()"
+                             [carouselInput]="videoCarouselInput"></app-tw-carousel>
+
+            <div class="main-container">
+<!--                <app-advertisement></app-advertisement>-->
+
+<!--                <h4>Earn 💰</h4>-->
+<!--                <h4>Get paid by playing new games</h4>-->
+<!--                <hr class="home-hr"/>-->
+<!--                <div class="row">-->
+<!--                    <div *ngFor="let toEarn of earnActivities" class="column-4" (click)="earnGo()">-->
+<!--                        <app-earn-card [earnActivity]="toEarn" type="pops"></app-earn-card>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+                <h4>Popular<img class="title-icon" src="/assets/icons/video.png"/></h4>
+                <hr class="home-hr"/>
+                <div class="row">
+                    <div *ngFor="let video of trendingContentInput?.videos" class="column-4">
+                        <app-preview-card [video]="video"></app-preview-card>
+                    </div>
+                </div>
+
+
+<!--                <h4>Trading 📈</h4>-->
+<!--                <h4>Hot tokens</h4>-->
+<!--                <hr class="home-hr"/>-->
+<!--                <div class="row">-->
+<!--                    <div *ngFor="let toInvest of investActivities" class="column-4">-->
+<!--                        <app-earn-card [earnActivity]="toInvest" type="pops"></app-earn-card>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+
+                <!-- Latest videos-->
+<!--                <h4>Latest<img class="title-icon" src="/assets/icons/video.png"/></h4>-->
+<!--                <hr class="home-hr"/>-->
+<!--                <div class="row">-->
+<!--                    <div *ngFor="let video of uploadedVideos" class="column-4">-->
+<!--                        <app-preview-card [video]="video"></app-preview-card>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Latest pops&ndash;&gt;-->
+<!--                <h4>Pops<img class="title-icon" src="/assets/icons/video.png"/></h4>-->
+<!--                <hr class="home-hr"/>-->
+<!--                <div class="row">-->
+<!--                    <div *ngFor="let video of popsVideo?.videos|slice:0:4" class="column-4-small pops">-->
+<!--                        <app-preview-card [video]="video" type="pops"></app-preview-card>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <!--                <app-advertisement></app-advertisement>-->
+
+                <!-- Popular -->
+<!--                <h4>Popular<img class="title-icon" src="/assets/icons/video.png"/></h4>-->
+<!--                <hr class="home-hr"/>-->
+<!--                <div class="row">-->
+<!--                    <div *ngFor="let video of trendingContentInput?.videos" class="column-4">-->
+<!--                        <app-preview-card [video]="video"></app-preview-card>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>
+
+
+<!--<div *ngIf="mob.isMobile()" class="home-page-container">-->
+<!--    Are you from mobile?-->
+<!--    Please download our apps:-->
+
+<!--</div>-->

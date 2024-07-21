@@ -1,0 +1,22 @@
+<ng-container *ngIf="!mob.isMobile()">
+    <h4>{{title}}
+        <img class="title-icon" src="{{iconUrl}}"/>
+    </h4>
+    <div class="channel-cards-wrapper">
+        <ng-container *ngFor="let r of rooms">
+            <app-channel-card class="trending-channels"
+                    [class.channel-card-wrapper-m]="!mob.isMobile()"
+                    [class.channel-card-wrapper-fw]="mob.isMobile()"
+                    [hostMode]="false" [mode]="mode" [room]="r"></app-channel-card>
+        </ng-container>
+    </div>
+</ng-container>
+<ng-container *ngIf="mob.isMobile()">
+    <div style="margin-top: 1rem" class="popular-content-title">trending channels  <img class="title-icon" style="width: 20px" src="{{iconUrl}}"/></div>
+    <div class="hor-scroll-container">
+        <div style="margin-top: 1.5rem" class="hor-list-items-container">
+            <app-channel-card style="font-size: 0.75rem" *ngFor="let r of rooms" class="channel-card-wrapper-mob trending-channels"
+                              [hostMode]="false" [mode]="mode" [room]="r"></app-channel-card>
+        </div>
+    </div>
+</ng-container>

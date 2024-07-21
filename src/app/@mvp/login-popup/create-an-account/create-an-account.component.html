@@ -1,0 +1,30 @@
+<h2 class="margin-bottom-32 remove-margin-top">Create an account</h2>
+
+<i class="fa-solid fa-key icon-big margin-bottom-32"></i>
+
+<p class="margin-top-8 margin-bottom-8">Just easy, connect your wallet and you are ready to go!</p>
+<div class="margin-top-72">
+    <div *ngIf="codeCorrect === false">
+        <p class="margin-top-8 margin-bottom-8">Do you have an invite code?</p>
+        <mat-form-field class="mat-form-field margin-top-8" appearance="outline">
+            <div [formGroup]="invitationForm">
+                <input formControlName="invitationCode" matInput>
+            </div>
+        </mat-form-field>
+        <button class="standard-button-purple" mat-raised-button>CREATE AN ACCOUNT</button>
+<!--        <p class="margin-top-8 margin-bottom-8">If you don't have it join our <a href="https://waitlist.solstream.io/">wait list</a>.-->
+<!--        </p>-->
+    </div>
+    <div *ngIf="codeCorrect === true">
+        <app-wallet-login style="width: 100%;" [mode]="'button'" [action]="'signup'" [invitationCode]="invitationCode"></app-wallet-login>
+<!--        <p class="margin-top-16 margin-bottom-16">- OR -</p>-->
+        <!--    <button class="social-media light-button" mat-raised-button (click)="signInWithFB()"><i class="fa-brands fa-facebook-f"></i></button>-->
+        <!--    <button class="social-media light-button" mat-raised-button (click)="signInWithTwitter()"><i class="fa-brands fa-twitter"></i></button>-->
+<!--        <button class="social-media light-button" mat-raised-button (click)="signInWithGoogle()"><i-->
+<!--                class="fa-brands fa-google"></i></button>-->
+<!--        <p class="margin-top-16 margin-bottom-16">- OR -</p>-->
+<!--        <button (click)="registerViaMail()" mat-button>REGISTER VIA E-MAIL</button>-->
+    </div>
+</div>
+
+

@@ -1,0 +1,30 @@
+<ng-container *ngIf="!mob.isMobile()">
+    <app-nav-bar></app-nav-bar>
+    <app-topics-menu style="width: 100%"></app-topics-menu>
+</ng-container>
+<div *ngIf="mob.isMobile()" style="height: 115px; width: 100%; background-color: #1f1f1f" id="top-bar-container"
+     [class.fixed]="true">
+    <app-nav-bar></app-nav-bar>
+    <app-topics-menu style="width: 100%"></app-topics-menu>
+</div>
+<div class="app-container" [class.post-fix]="mob.isMobile()">
+    <div class="fx-center-items spinner uploader-status" *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!loading && videos?.length === 0" class="fx-center-items">
+        <h3>No results. Try a different key.</h3>
+    </div>
+    <ng-container *ngIf="!loading && videos?.length !== 0">
+        <div *ngIf="mob.isMobile()" style="width: 100%">
+            <div class="video-card-wrapper-fw" *ngFor="let vid of videos">
+                <app-video-card (videoCardClicked)="videoCardClicked(vid)" [showRoomData]="true" [compact]="true" [video]="vid"></app-video-card>
+            </div>
+        </div>
+        <div *ngIf="!mob.isMobile()" style="width: 100%">
+            <div class="video-card-wrapper-s" *ngFor="let vid of videos">
+                <app-video-card (videoCardClicked)="videoCardClicked(vid)" [showRoomData]="true" [compact]="false" [video]="vid"></app-video-card>
+            </div>
+        </div>
+    </ng-container>
+</div>
+

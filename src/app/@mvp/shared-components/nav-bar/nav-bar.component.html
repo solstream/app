@@ -1,0 +1,42 @@
+<header class="site-header" [ngClass]="{'mobile': mob.isMobile() }">
+   <div class="site-header__logo" [routerLink]="'/new'">
+        <img class="logo-solstream" style="height: 2.1rem; cursor: pointer" [routerLink]="'/new'" src="assets/logos/syouicon.png">
+    </div>
+    <div class="site-header__title" [routerLink]="'/new'">
+        solstream
+   </div>
+   <div class="site-header__search">
+       <div class="site-header__search--input">
+            <input matInput [formControl]="search" (keyup.enter)="setSearch()" type="text" class="search-click" placeholder="Search" />
+            <span class="material-icons" (click)="setSearch()">search</span>
+       </div>
+    </div>
+   <div class="site-header__nav">
+       <span class="material-icons search-icon" (click)="toggleMobileSearch()">search</span>
+       <div *ngIf="!isLoggedIn()" class="create">
+            <button (click)="registerWithWallet()" mat-flat-button>
+                <i class="fa-solid fa-wallet"></i>
+                <img class="logo"src="/assets/logos/solstreambeta.png" alt="">
+                Login
+            </button>
+       </div>
+<!--       <div *ngIf="!isLoggedIn() && !mob.isMobile()" class="login">-->
+<!--           <button (click)="loginWithWallet()" mat-flat-button>Login</button>-->
+<!--        </div>-->
+       <div *ngIf="isLoggedIn() && solstreamBalance" class="wallet">
+            <i class="fa-solid fa-wallet"></i>
+            <img class="logo"src="/assets/logos/solstreambeta.png" alt="">
+       </div>
+       <div *ngIf="isLoggedIn() && solstreamBalance" class="earnings">
+           {{solstreamBalance}}<span class="decimals">,{{solstreamDecimalBalance}}</span>
+       </div>
+       <div *ngIf="isLoggedIn()" class="user">
+        <app-user-settings *ngIf="isLoggedIn()"></app-user-settings>
+       </div>
+   </div>
+    <div *ngIf="mobileSearch" class="site-header__search-mobile">
+        <input (keyup.enter)="setSearch()" matInput [formControl]="search" type="text" placeholder="Search" />
+        <span class="material-icons" (click)="setSearch()">search</span>
+    </div>
+
+</header>

@@ -1,0 +1,60 @@
+<div class="uploaded-videos">
+    <h4><span>Latest pops</span></h4>
+    <div *ngIf="!mob.isMobile()">
+        {{lastVideos.length}}
+        <div class="video-card-wrapper-m" *ngFor="let uploadedVideo of lastVideos">
+            <app-video-card [showType]="false"
+                            (videoCardClicked)="videoCardClicked($event)"
+                            (deleteVideo)="openModalConfirmRemove(uploadedVideo)"
+                            [video]="uploadedVideo"
+                            [editable]="true"></app-video-card>
+        </div>
+        <mat-accordion *ngIf="videos.length > 8">
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <button class="papel-purple" mat-button>
+                            Show older pops
+                        </button>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div [class.video-card-wrapper-m]="true" *ngFor="let uploadedVideo of videos">
+                    <app-video-card [showType]="false"
+                                    (videoCardClicked)="videoCardClicked($event)"
+                                    (deleteVideo)="openModalConfirmRemove(uploadedVideo)"
+                                    [video]="uploadedVideo"
+                                    [editable]="true"></app-video-card>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </div>
+    <div *ngIf="mob.isMobile()">
+        <div [class.video-card-wrapper-fw]="true" *ngFor="let uploadedVideo of lastVideos">
+            <app-video-card (videoCardClicked)="videoCardClicked($event)"
+                            (deleteVideo)="openModalConfirmRemove(uploadedVideo)"
+                            [showType]="false"
+                            [video]="uploadedVideo"
+                            [editable]="true"></app-video-card>
+        </div>
+        <mat-accordion *ngIf="videos.length > 8">
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <button class="papel-purple" mat-button>
+                            Show older pops
+                        </button>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="video-card-wrapper-m" *ngFor="let uploadedVideo of videos">
+                    <app-video-card [showType]="false"
+                                    (videoCardClicked)="videoCardClicked($event)"
+                                    (deleteVideo)="openModalConfirmRemove(uploadedVideo)"
+                                    [video]="uploadedVideo"
+                                    [editable]="true"></app-video-card>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </div>
+</div>

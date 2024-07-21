@@ -1,0 +1,50 @@
+<div class="papel-black1" style="display: flex; height: 100%; flex-direction: column;">
+    <div *ngIf="!mob.isMobile()" class="chat-title fx-center-items">
+        STREAM CHAT
+    </div>
+    <div *ngIf="mob.isMobile()" class="chat-title fx-center-items">
+        <div style="flex: 1 1 auto" class="fx-center-items">STREAM CHAT</div>
+        <mat-icon (click)="close()">close</mat-icon>
+    </div>
+    <div #scrollToBottom class="chat-messages fx-column">
+        <div class="welcome">Welcome to the chat room!</div>
+        <div class="chat-message" *ngFor="let i of messages">
+            <span class="sender-name">
+                <div class="sender-name" [ngStyle]="{'color': i.color}" [class.current-user]="i.userName === userName">
+                    <strong>{{i.userName}}</strong>
+<!--                    <app-premium-tick [isVerified]="i.premium"></app-premium-tick>-->
+                </div>
+            </span>
+            <span>: </span>
+            <span>{{i.text}}</span>
+
+            <ng-container *ngIf="showControls">
+                <i (click)="deleteMessage(i)" class="fa-solid fa-xmark delete"></i>
+                <i *ngIf="!isHelperOrOwner(i)" (click)="banUser(i)" class="fa-solid fa-user-slash ban"></i>
+            </ng-container>
+        </div>
+    </div>
+    <div class="chat-send fx-column">
+        <div class="textarea-container">
+            <textarea *ngIf="isLoggedIn()" class="chat-area" rows="1" cols="10"
+                      [disabled]="false" (keyup.enter)="broadcastMessage(message)" [(ngModel)]="message"
+                      placeholder="Send a message"></textarea>
+            <textarea *ngIf="!isLoggedIn()" class="chat-area" rows="1" cols="1"
+                      [disabled]="true" [(ngModel)]="message"
+                      placeholder="Login to send a comment"></textarea>
+            <mat-icon class="picker"
+                      (click)="toggled = !toggled"
+                      [(emojiPickerIf)]="toggled"
+                      [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+                      (emojiPickerSelect)="emojiSelected($event)">face
+            </mat-icon>
+        </div>
+        <button [disabled]="disabled || !isLoggedIn() || isUserBanned()" (click)="broadcastMessage(message)" mat-raised-button
+                class="standard-button-purple">
+            <span *ngIf="!isUserBanned(); else banned" class="black-text">Chat</span>
+            <ng-template #banned>
+                <span class="black-text">{{room?.roomName}} banned you!</span>
+            </ng-template>
+        </button>
+    </div>
+</div>

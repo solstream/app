@@ -1,0 +1,115 @@
+<app-nav-bar></app-nav-bar>
+<div class="fx-container fx-start app-container edit-account">
+  <h2>Account info</h2>
+  <div *ngIf="accountForm" [formGroup]="accountForm" class="responsive-content">
+    <div class="fx-row">
+      <div style="flex: 1 1 auto;">
+        <span class="avatar-label">Avatar</span>
+        <div class="wrap user-avatar-container">
+          <img *ngIf="avatarSrc" class="main-profile-img user-avatar " mat-card-sm-image [src]="avatarSrc"
+               style="border-radius: 50%;" alt="">
+          <input style="display: none;" accept="image/*" type="file" class="file-input"
+                 (change)="profileImageSelected($event)" #fileUpload>
+          <button (click)="fileUpload.click()" class="edit-button">
+            <img class="button-icon edit-icon" src="/assets/icons/upload.png" width="16px"/>
+          </button>
+          <button class="generate-button" (click)="generateAvatar()">
+            <img class="button-icon" src="/assets/icons/random.png" width="23px"/>
+          </button>
+        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Account name</mat-label>
+          <input formControlName="roomName" matInput placeholder="Account name">
+          <mat-error *ngIf="accountForm.get('roomName').hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="accountForm.get('roomName').hasError('minlength')">
+            This is premium and for now not usable. Please use a name longer than 7 characters.
+          </mat-error>
+          <mat-error *ngIf="accountForm.get('roomName').hasError('taken')">
+            Name is taken
+          </mat-error>
+          <mat-error *ngIf="accountForm.get('roomName').hasError('pattern')">
+            White space not allowed
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Streaming Title</mat-label>
+          <input formControlName="streamTitle" matInput placeholder="Streaming title">
+          <mat-error *ngIf="accountForm.get('streamTitle').hasError('required')">
+            Streaming Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Bio</mat-label>
+      <textarea formControlName="bioText" matInput placeholder="Bio" cols="30" rows="2"
+                class="bio-text-area"></textarea>
+      <mat-error *ngIf="accountForm.get('bioText').hasError('required')">
+        Bio is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Topic</mat-label>
+      <input type="text" disabled
+             placeholder="Pick one"
+             aria-label="Number"
+             matInput
+             formControlName="roomTopic"
+             [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of topicsOptions" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Wallet address</mat-label>
+      <input formControlName="qrCode" matInput placeholder="Crypto address">
+      <mat-error *ngIf="accountForm.controls.qrCode.hasError('required')">
+        Wallet address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!--                <button *ngIf="!initialRoomModel.streamKey" mat-raised-button class="standard-button-purple">-->
+    <!--                    <span class="black-text">Generate Stream key</span>-->
+    <!--                </button>-->
+    <app-live-peer-key></app-live-peer-key>
+    <mat-form-field *ngIf="initialRoomModel && initialRoomModel.streamKey" appearance="outline">
+      <mat-label>Stream key</mat-label>
+
+      <input disabled formControlName="streamKey" matInput>
+    </mat-form-field>
+    <mat-form-field *ngIf="initialRoomModel && initialRoomModel.streamKey" appearance="outline">
+      <mat-label>RTMP Server settings</mat-label>
+      <input disabled value="rtmp://rtmp.theta.com/live" matInput>
+    </mat-form-field>
+    <!--        <div class="padding-top-8">-->
+    <!--            <a class="white-color" routerLink="/setup-obs">How to setup OBS</a>-->
+    <!--        </div>-->
+    <div class="room-footer">
+      <div class="room-actions-container">
+        <div class="room-actions">
+          <button *ngIf="savingRoom" mat-raised-button class="light-button" style="pointer-events: none"
+                  [disabled]="true">
+            <div style="width: 107px" class="white-color">
+              <i class="fa fa-spinner fa-spin"></i>
+              SAVING...
+            </div>
+          </button>
+          <button *ngIf="!savingRoom" mat-raised-button class="standard-button-purple"
+                  [disabled]="roomNameChanged || accountForm.invalid" (click)="saveRoom()">
+            <span class="black-text" *ngIf="!editMode">CREATE PROFILE</span>
+            <span class="black-text" *ngIf="editMode">UPDATE PROFILE</span>
+          </button>
+          <button [disabled]="savingRoom" mat-raised-button class="light-button"
+                  *ngIf="cancelButtonVisible" (click)="onCancel()">
+            <span>CANCEL</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+

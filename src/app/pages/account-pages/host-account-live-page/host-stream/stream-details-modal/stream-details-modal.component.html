@@ -1,0 +1,28 @@
+<div class="modal-container">
+    <h3><b>LIVE STREAM</b></h3>
+    <p>
+        <mat-slide-toggle class="marign-right-8"  color="warn" [formControl]="videoControl">Enable video</mat-slide-toggle>
+        <mat-slide-toggle class="marign-right-8"  color="warn" [formControl]="inviteControl">Enable invitations</mat-slide-toggle>
+        <mat-slide-toggle color="warn" (change)="recordValue($event)">Record streaming</mat-slide-toggle>
+    </p>
+    <p>
+        Let others know, what are you streaming about!
+    </p>
+    <div class="upload-form-field">
+        <mat-form-field appearance="outline" class="u-fw">
+            <mat-label> Title</mat-label>
+            <input matInput placeholder="Title" id="title" type="text" [formControl]="titleControl">
+        </mat-form-field>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button class="button-purple upload-button"
+                [disabled]="titleControl.value?.length < 4"
+                (click)="onStartStream()">
+            <span class="black-text pointer">START STREAMING</span>
+        </button>
+        <button mat-raised-button class="light-button" (click)="cancel()">
+            <span class="white-color pointer">Cancel</span>
+        </button>
+    </mat-dialog-actions>
+
+</div>

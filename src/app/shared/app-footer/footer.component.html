@@ -1,0 +1,86 @@
+<div class="footer">
+<!--    <div class="footer-container">-->
+<!--        <div class="footer-data">-->
+<!--            <div class="footer-logo">-->
+<!--                <img class="footer-logo-image" style="cursor: pointer" [routerLink]="'/'" src="assets/3D/standardHeadset-min.png">-->
+<!--            </div>-->
+<!--            <div class="footer-menu">-->
+<!--                <div>Become A Content Creator</div>-->
+<!--                <div>Become A Sponsor</div>-->
+<!--                <div>Support</div>-->
+<!--                <div>Official Rules</div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="copy">-->
+<!--            <div class="copy-text">Copyright© 2021 solstream.tv All Rights Reserved.</div>-->
+<!--            <div class="copy-links">-->
+<!--                <a routerLink="privacy-policy">Privacy Policy</a>-->
+<!--                <a routerLink="cookie-policy">Cookie Policy</a>-->
+<!--                <a routerLink="terms-and-conditions">Terms</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="footer">
+        <div *ngIf="!mob.isMobile()" class="f1 copy">
+            <div  class='container2'>
+                <div>
+                    <img class="footer-logo-image iconDetails" style="cursor: pointer" [routerLink]="'/'" src="../../../assets/logos/syouicon.png">
+<!--                    <img src='http://ecx.images-amazon.com/images/I/21-leKb-zsL._SL500_AA300_.png' class='iconDetails'>-->
+                </div>
+                <div style='margin-left:60px;margin-top: 60px' class="company-text-container">
+                    <h4 class="title">solstream v2.0</h4>
+                    <div style="font-size:1em;float:left;">Watch. Upload. Earn.</div>
+                </div>
+            </div>
+        </div>
+
+<!--        <div class="f2">-->
+<!--            <h3 class="title">About</h3>-->
+<!--            <div class="footer-menu">-->
+<!--                <ul>-->
+<!--                    <li *ngFor="let service of about" class="arrow">-->
+<!--                        <span class="menu-element">-->
+<!--                            <a *ngIf="!service.blank"-->
+<!--                                    class="menu-link"-->
+<!--                               routerLink="{{service.url}}">{{service.name}}</a>-->
+<!--                        </span>-->
+<!--                        <span class="menu-element">-->
+<!--                            <a *ngIf="service.blank"-->
+<!--                               class="menu-link"-->
+<!--                               target="_blank"-->
+<!--                              href="{{service.url}}">{{service.name}}</a>-->
+<!--                        </span>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="f3">-->
+<!--            <h3 class="title">Service and Contact</h3>-->
+<!--            <div class="footer-menu">-->
+<!--                <ul>-->
+<!--                    <li *ngFor="let service of services" class="arrow">-->
+<!--                        <span class="menu-element">-->
+<!--                            <a class="menu-link" -->
+<!--                                    href="{{service.url}}">{{service.name}}</a>-->
+<!--                        </span>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+<!--            </div>-->
+<!--        </div>-->
+
+
+
+    </div>
+
+    <div class="sub-footer">
+        <div class="copyright">Copyright© 2024 SolStream. <span class="black-text" *ngIf="!mob.isMobile()">All Rights Reserved.</span></div>
+<!--        <div class="policies">-->
+<!--            <a  href="/privacy-policy">Privacy Policy</a>-->
+<!--            <a  href="/cookie-policy">Cookie Policy</a>-->
+<!--            <a href="/terms-and-conditions">Terms</a>-->
+<!--        </div>-->
+    </div>
+</div>

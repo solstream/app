@@ -1,0 +1,16 @@
+<ng-container *ngIf="!isMobile">
+    <div [ngClass]="{'channel-page' : showSignUpBar}" class="u-fh">
+        <app-nav-bar></app-nav-bar>
+        <div class="channels-page-container">
+            <app-sidenav></app-sidenav>
+            <div id="channel-view-container" class="main">
+                <app-channel-view [otherContent]="otherContent"></app-channel-view>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="isMobile">
+    <app-channel-view-profile-mob [videosAndPodcasts]="podcastsAndVideos">
+    </app-channel-view-profile-mob>
+</ng-container>
+<app-video-disclaimer></app-video-disclaimer>

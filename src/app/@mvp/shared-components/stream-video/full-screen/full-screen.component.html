@@ -1,0 +1,7 @@
+<button *ngIf="!fullScreenOn && hasFullScreen" (click)="toggleFullScreen()">
+    <fa-icon [icon]="expandIcon"></fa-icon>
+</button>
+<button *ngIf="fullScreenOn" (click)="toggleFullScreen()"
+        style="background-color: transparent; position: fixed; z-index: 2000; right: 3px; bottom: 5px">
+    <fa-icon style="font-size: 30px" [icon]="compressIcon"></fa-icon>
+</button>

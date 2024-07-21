@@ -1,0 +1,16 @@
+mat-form-field {
+  width: 100%;
+}
+button {
+  margin: .5rem
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

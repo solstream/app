@@ -1,0 +1,12 @@
+<div id="stream-container" style="">
+    <div class="live-chip-container">
+        <app-live-chip *ngIf="!becomeOffline"></app-live-chip>
+        <app-offline-chip *ngIf="becomeOffline"></app-offline-chip>
+<!--        <app-chip [type]="'offline'" *ngIf="becomeOffline"></app-chip>-->
+    </div>
+<!--    <video id="vid1" controls playsinline muted></video>-->
+</div>
+<div class="action-container" style="display: flex">
+    <div style="flex: 1 1 auto"></div>
+    <app-full-screen id="app-full-screen" [htmlItemId]="'stream-container'"></app-full-screen>
+</div>

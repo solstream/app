@@ -1,0 +1,19 @@
+<div class="app-container">
+    <div class="search-panel" style="padding: 1rem; max-width: 300px">
+        <mat-form-field style="margin: 0.5rem;" appearance="outline">
+            <input [disabled]="false" [formControl]="search" matInput placeholder="search">
+        </mat-form-field>
+        <button (click)="newRoom()" style="margin: 0.5rem; cursor: pointer;" mat-raised-button>New Account</button>
+    </div>
+    <div class="channel-cards-wrapper">
+        <div class="fx-center-items u-pt-10" *ngIf="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!loading">
+            <ng-container *ngFor="let room of rooms">
+                <app-channel-card class="channel-card-wrapper-m" [hostMode]="true" [mode]="'admin'"
+                                  [room]="room"></app-channel-card>
+            </ng-container>
+        </div>
+    </div>
+</div>

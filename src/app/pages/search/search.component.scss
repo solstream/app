@@ -1,0 +1,16 @@
+@import "../../../variables";
+
+.app-container {
+  min-height: 65%;
+}
+.no-results {
+  padding: 20px;
+}
+
+.spinner {
+ padding-top: 50px;
+}
+
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #b1b1b1!important;
+}

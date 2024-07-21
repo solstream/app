@@ -1,0 +1,30 @@
+@import "../../../../variables";
+
+.channels-title {
+  padding: 10px;
+  display: flex;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+}
+
+hr {
+  border: 0.5px solid $papelPurple2;
+  margin: 0 10px;
+}
+
+.warm-welcome-text {
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.warm-welcome-button {
+  margin-top: 20px!important;
+  margin-bottom: 20px!important;
+}
+.mat-list .mat-list-item {
+  height: 40px!important; /* default is 72px */
+}
+
+::ng-deep .mat-list-item-content {
+  padding: 0 !important;
+}

@@ -1,0 +1,49 @@
+<ng-container *ngIf="!mob.isMobile()">
+    <app-nav-bar [disable]="true"></app-nav-bar>
+    <div *ngIf="room" class="fx-container">
+        <div class="fx-container fx-start">
+            <div style="width: 100%; height: 100%">
+                <app-live-stream-title [room]="room"></app-live-stream-title>
+                <div class="stream-with-chart-container fx-start fx-row">
+                    <div class="stream-container column" style=" height: 100%; width: 75%;">
+                        <div class="video-container">
+                            <app-host-stream (conferenceCreated)="joinConference($event)" [hostRoom]="room"></app-host-stream>
+                        </div>
+                    </div>
+                    <div class="chart-container column" style=" height: 100%; width: 25%;">
+                        <app-chat [showControls]="true" [userName]="userName"></app-chat>
+                    </div>
+                    <div *ngIf="conferenceId && inviteEnabled" class="chart-container column" style=" height: 100%; width: 25%;">
+                        <app-participants></app-participants>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="mob.isMobile()">
+    <mat-sidenav-container *ngIf="room" class="example-container">
+        <mat-sidenav-content>
+            <div style="display: block; height: 100%">
+                <app-nav-bar></app-nav-bar>
+                <div *ngIf="!(scx.liveTerminationInProgress$ | async)" style="height: calc(100% - 56px);">
+                    <div class="video-container">
+                        <app-host-stream [hostRoom]="room"></app-host-stream>
+                    </div>
+                    <div style="height: calc(100% - 56.25vw);">
+                        <div class="room-detail-container">
+                            <app-live-stream-title [room]="room"></app-live-stream-title>
+                        </div>
+                        <div style="height: calc(100% - 110px);" class="room-messages-container">
+                            <app-chat [userName]="userName"></app-chat>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="(scx.liveTerminationInProgress$ | async)" style="height: calc(100% - 56px);">
+                    Terminating, session
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</ng-container>
+

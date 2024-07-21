@@ -1,0 +1,12 @@
+<!--<div class="fx-row fx-center-items">-->
+    <div class="stream-card-container">
+        <div class="top-stream-card ">
+            {{currentVideoRoom.conferenceId}}
+            <div #videoElement class="top-stream-card__video" style="">
+                <!-- NOTE current app-live-stream-view must destroyed and recreated to connect live-stream -->
+                <!-- NOTE parent component will destroy -->
+                <app-live-stream-view [room]="currentVideoRoom"></app-live-stream-view>
+            </div>
+        </div>
+    </div>
+

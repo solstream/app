@@ -1,0 +1,15 @@
+<div (click)="itemClicked.emit(channel)" class="channel" [class.collapsed]="isCollapsed" [class.selected]="selected">
+    <div class="channel-image">
+        <img [ngClass]="{ 'verified': channel?.premium, 'live': channel?.isLive }"
+             [src]="channel.avatarAzureUrl || '/assets/icons/login-btn.png'" alt="">
+    </div>
+    <div *ngIf="!isCollapsed" class="channel-list__channel-data">
+        <div class="channel-list__channel-name">{{channel.roomTitle}}</div>
+        <app-premium-tick [isVerified]="channel?.premium"></app-premium-tick>
+    </div>
+    <div *ngIf="!isCollapsed" class="channel-stats">
+        <div *ngIf="channel.isLive" class="circle-red"></div>
+        <div *ngIf="!channel.isLive" class="circle-gray"></div>
+        <span *ngIf="channel.isLive && channel.observersCount > 0">{{channel.observersCount}}</span>
+    </div>
+</div>

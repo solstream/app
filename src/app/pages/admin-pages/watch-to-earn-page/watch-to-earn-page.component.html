@@ -1,0 +1,61 @@
+<!--<button *ngIf="!savingRoom" mat-raised-button class="standard-button-purple"-->
+<!--        [disabled]="roomNameChanged || roomForm.invalid" (click)="saveRoom()">-->
+<!--    <span class="black-text" *ngIf="!editMode">CREATE PROFILE</span>-->
+<!--    <span class="black-text" *ngIf="editMode">UPDATE PROFILE</span>-->
+<!--</button>-->
+<h3>for testing purposes, videoId is hardcoded in source, must be existing one</h3>
+<div class="fx-row">
+    <mat-form-field style="width: 350px" appearance="fill">
+        <mat-label>video id</mat-label>
+        <input matInput [(ngModel)]="videoId">
+    </mat-form-field>
+</div>
+<div class="fx-row">
+    <button mat-raised-button class="light-button" (click)="earn()">
+        <span>earn</span>
+    </button>
+    <button mat-raised-button class="light-button" (click)="startVideo()">
+        <span>start video</span>
+    </button>
+    <button mat-raised-button class="light-button" (click)="stopVideo()">
+        <span>stop video</span>
+    </button>
+    <button mat-raised-button class="light-button" (click)="withdraw()">
+        <span>withdraw</span>
+    </button>
+    <button mat-raised-button class="light-button" (click)="reset()">
+        <span>reset</span>
+    </button>
+</div>
+<div style="padding: 2rem;">
+    {{earnings?.earnings}}
+</div>
+
+<div class="fx-row">
+    <div class="fx-column u-w-33">
+        <div style="padding: 1rem; border: 1px solid gray" *ngFor="let e of earningsLedge">
+            <span style="padding: 0.5rem" class="papel-purple">{{e.accountName}}</span>
+            <span style="padding: 0.5rem" class="papel-black1">{{e.earnings}}</span>
+            <br>
+            <span style="padding: 0.5rem" class="papel-black1">{{e.type}}</span>
+            <div class="papel-black1 video-id">{{e.videoId}}</div>
+            {{e.created | date:'mediumTime'}}
+        </div>
+    </div>
+    <div class="fx-column u-w-33">
+        <div style="padding: 1rem; border: 1px solid gray" *ngFor="let e of logz">
+            <span style="padding: 0.5rem" class="papel-purple">{{e.accountName}}</span>
+            <span style="padding: 0.5rem" class="papel-black1">{{e.type}}</span>
+            <div style="padding: 0.5rem" class="video-id papel-black1">{{e.entityId}}</div>
+            {{e.time | date:'mediumTime'}}
+        </div>
+    </div>
+    <div class="fx-column u-w-33">
+        <div style="padding: 1rem; border: 1px solid gray" *ngFor="let e of withdrawals">
+            <span style="padding: 0.5rem" class="papel-purple">{{e.accountName}}</span>
+            <span style="padding: 0.5rem" class="papel-black1">{{e.status}}</span>
+            <div style="padding: 0.5rem" class="video-id papel-black1">{{e.amount}}</div>
+            {{e.created | date:'mediumTime'}}
+        </div>
+    </div>
+</div>

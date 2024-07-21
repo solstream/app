@@ -1,0 +1,11 @@
+@import "../../../../../variables";
+.channel-card-container {
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.channel-card-container:hover {
+  -webkit-box-shadow: 5px 5px 15px 5px #21316a;
+  box-shadow: 5px 5px 15px 5px #162055;
+  border-color: $papelWhite0;
+}

@@ -1,0 +1,26 @@
+<div class="top-stream-card__info-card" style="display: flex; flex-direction: column">
+    <div class="title">{{title}}</div>
+    <div class="channel-info">
+        <div class="channel-info-icon">
+            <app-channel-icon [small]="true" [isPremium]="channel?.premium" [iconUrl]="channel?.avatarAzureUrl"></app-channel-icon>
+        </div>
+        <div (click)="goToChannel()" class="channel-info-title">
+            <div class="room-title">{{channel?.roomTitle}}</div>
+            <app-premium-tick [isVerified]="channel?.premium"></app-premium-tick>
+        </div>
+    </div>
+
+    <div class="top-stream-card__info-card__bio card-carousel">
+        <div class="bio-container">
+            <div *ngIf="channel?.bioText" class="bio-text" [innerHTML]="channel?.bioText | bioText"></div>
+        </div>
+    </div>
+    <div style="display: flex; flex: 1 1 auto; justify-content: flex-start">
+        <div style="display: inline-block; height: 15px" class="stream-topic">{{channel?.roomTopic}}</div>
+    </div>
+    <div class="top-stream-card__info-card__watch">
+        <button mat-raised-button (click)="goToRoom()" class="standard-button-purple">
+            <span class="watch-earn">WATCH & EARN</span>
+        </button>
+    </div>
+</div>

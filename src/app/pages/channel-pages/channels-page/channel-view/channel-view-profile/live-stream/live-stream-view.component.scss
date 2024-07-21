@@ -1,0 +1,21 @@
+@import "../../../../../../../variables";
+
+.invitation-banner {
+  position: fixed;
+  background: $papelPurple2;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  left: 0;
+
+  button {
+    margin: 0.5rem;
+  }
+
+  .close-icon {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}

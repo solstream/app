@@ -1,0 +1,34 @@
+@import "../../../../../variables";
+
+.video-item {
+  background-color: $papelBlack0;
+}
+
+.video-item:hover {
+  -webkit-box-shadow: 2px 2px 15px 2px $sio3;
+  box-shadow: 2px 2px 15px 2px $sio3;
+  border: 2px solid $sio3 !important;
+}
+
+.video-item-container {
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.container-video-item {
+  width: calc(100% - 0.5rem);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  padding-top: 56%; /* 9:16 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
+}
+
+.video-item-selected > .video-item {
+  border: 2px solid $sio4;
+}
+
+.video-item {
+  border: 2px solid $papelGrey2;
+}

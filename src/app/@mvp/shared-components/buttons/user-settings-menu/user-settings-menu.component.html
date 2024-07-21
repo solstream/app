@@ -1,0 +1,29 @@
+<div class="user" [matMenuTriggerFor]="menuUser">
+     <img *ngIf="!mob.isMobile()" width="40px" class="pointer logout navbar-avatar"
+     [src]="avatarSrc" />
+     <span *ngIf="!mob.isMobile()" class="material-icons arrow">arrow_drop_down</span> 
+</div>
+
+<mat-icon *ngIf="mob.isMobile()"
+         class="mat-icon material-icons burger-menu"
+          [matMenuTriggerFor]="menuUser"
+          role="img" aria-hidden="true">menu</mat-icon>
+<mat-menu #menuUser="matMenu" class="user-menu">
+
+    <button *ngIf="user?.role === 'ADMIN'" (click)="navigateToAdmin()" mat-menu-item>
+          <mat-icon >perm_identity</mat-icon>
+          Admin
+     </button>
+     <button (click)="goToConsole()" mat-menu-item>
+          <mat-icon >tv</mat-icon>
+          My TV
+     </button>
+     <button (click)="navigateToEditProfile()" mat-menu-item>
+          <mat-icon>perm_identity</mat-icon>
+          Profile
+     </button>
+     <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+     </button>
+</mat-menu>

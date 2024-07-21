@@ -1,0 +1,56 @@
+<!--        (click)="openDialog()" -->
+<!---->
+<i
+        matTooltip="Coming soon"
+         matTooltipPosition="below"
+         class="fa-solid fa-gift"></i>
+
+<ng-template #callAPIDialog>
+    <div class="mat-dialog-container donate-button-container">
+        <h2 class="margin-bottom-32 room-name">Tip {{room.roomName}}</h2>
+        <i class="fa-solid fa-donate fa-big icon-big margin-bottom-32"></i>
+        <div class="quantity">
+            <input  [(ngModel)]="amountToDonate" type="number" min="1" name="tokens" step="1" value="1">
+        </div>
+        <p class="margin-top-8 margin-bottom-8">
+            You can donate crypto to your favorite content creator.
+        </p>
+
+        <mat-dialog-content>
+            <i (click)="closeDialog()" class="fa-solid fa-xmark close-icon"></i>
+            <div class="fx fx-wrap">
+                <div class="fx-column fx-center-items">
+<!--                    <div matTooltipPosition="below" matTooltip="Soon available">-->
+<!--                        <button disabled  mat-raised-button class="standard-button-purple">-->
+<!--                            <span class="white-color">DONATE 50 solstream</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="fx-center-items margin-top-16">
+<!--                <button *ngIf="isBNBNetwork && walletProvided"  (click)="donateBNB()" mat-raised-button class="standard-button-purple">-->
+<!--                    <span class="white-color">SEND 0.01 BNB</span>-->
+<!--                </button>-->
+                <div *ngIf="isBNBNetwork && walletProvided"  >
+                    <span class="white-color">You have to switch your network to MATIC</span>
+                </div>
+                <button *ngIf="isMATICNetwork && walletProvided"  (click)="donateMatic()" mat-raised-button class="standard-button-purple">
+                    <span class="white-color">SEND {{amountToDonate}} MATIC</span>
+                </button>
+                <button *ngIf="isBNBNetwork && !walletProvided"
+                        matTooltip="The content creator has not provided a wallet yet"
+                        aria-label="Button that displays a tooltip when focused or hovered over"
+                        mat-raised-button class="light-button light-disabled interaction">
+                    <span class="white-color">SEND 0.01 BNB</span>
+                </button>
+                <button *ngIf="isMATICNetwork && !walletProvided"
+                        matTooltip="The content creator has not provided a wallet yet"
+                        aria-label="Button that displays a tooltip when focused or hovered over"
+                        mat-raised-button class="light-button light-disabled interaction">
+                    <span class="white-color">SEND {{amountToDonate}} MATIC</span>
+                </button>
+            </div>
+
+        </mat-dialog-content>
+    </div>
+</ng-template>

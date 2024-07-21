@@ -1,0 +1,36 @@
+@import '../../../../../../../variables';
+
+.channel-view-parti-container {
+  display: flex;
+  justify-content: center;
+  padding-right: 0.5rem;
+  border-radius: 25px;
+
+
+  .participant {
+    display: inline-flex;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  .total-participants {
+    padding-left: 0.5rem;
+  }
+
+  .parti-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    img {
+      height: 48px;
+      width: 48px;
+    }
+  }
+
+}
+
+
+
+

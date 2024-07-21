@@ -1,0 +1,42 @@
+<h2 class="margin-bottom-32 remove-margin-top">Register via e-mail</h2>
+<div class="fx-center-items">
+    <div [formGroup]="signUpForm" class="login-panel">
+        <mat-form-field class="mat-form-field-outline-thick margin-top-8" appearance="outline">
+            <input formControlName="email" matInput placeholder="Email">
+            <mat-error *ngIf="signUpForm.get('email').hasError('pattern')">
+                <strong>{{validations.email}}</strong>
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+                <strong>{{validations.required}}</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input type="password" formControlName="password" matInput placeholder="Password">
+            <mat-error *ngIf="signUpForm.get('password').hasError('required')">
+                <strong>{{validations.required}}</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input type="password" formControlName="password2" matInput placeholder="Confirm password">
+            <mat-error *ngIf="signUpForm.get('password2').hasError('required')">
+                <strong>{{validations.required}}</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="error === 'user-exists'">
+            Email {{signUpForm.controls.email.value}} already registered.
+        </mat-error>
+        <mat-error *ngIf="error === 'other'">
+            Something went wrong please try again later.
+        </mat-error>
+        <mat-error *ngIf="samePassword === false">
+            Passwords don't match
+        </mat-error>
+        <button (click)="signUp()" class="standard-button-purple" mat-raised-button>
+            <span class="black-text">Sign up</span>
+        </button>
+        <div class="u-fw fx-row fx-end">
+            <a (click)="goBack()" class="grey-color">go back</a>
+        </div>
+    </div>
+</div>
+

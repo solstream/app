@@ -1,0 +1,83 @@
+@import "../../../../../../variables";
+.channel {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 1rem 1rem 0.4em;
+}
+
+.channel-image {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.channel-data, .channel-stats {
+  color: $papelWhite1;
+}
+
+.channel-name {
+  color: $papelBlack0;
+  font-size: 1.2em;
+}
+
+.white {
+  color: $papelWhite1!important;
+}
+
+.channel-name:hover {
+  color: $papelBlack0;
+}
+
+.channel-data {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.channel-topic {
+  font-size: 0.75rem;
+  color: $papelBlack0;
+  margin-top: 2px;
+}
+
+.circle-red {
+  background-color: red;
+  border-radius: 100px;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 5px;
+}
+
+.circle-gray {
+  background-color: darkgrey;
+  border-radius: 100px;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 5px;
+}
+
+.stream-topic {
+  display: inline-block;
+  margin: 0.2em;
+}
+
+.channel-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  background-color: $papelBlack2!important;
+}
+
+.inline-block {
+  display: inline-block;
+}

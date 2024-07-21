@@ -1,0 +1,122 @@
+<div *ngIf="room" class="video-description">
+    <div class="video-title-container fx-space-between margin-bottom-8" [ngClass]="{ 'mobile' : mob.isMobile() }">
+        <div class="video-title">{{video?.title}}</div>
+        <div  *ngIf="mob.isDesktop()"class="video-actions fx fx-space-between align-items-center">
+            <div *ngIf="video?.ipfsMetaData" class="fx-center-items video-action">
+                <img
+                        matTooltipPosition="below"
+                        matTooltip="Video metadata on IPFS"
+                        (click)="goToIpfs()"
+                        src="/assets/logos/ipfs.png"
+                        class="ipfs-logo"
+                        alt="IPFS logo"
+                >
+            </div>
+<!--            <div class="fx-center-items video-action-disabled">-->
+<!--                <img-->
+<!--                        matTooltip="Coming soon"-->
+<!--                        matTooltipPosition="below"-->
+<!--                        src="/assets/logos/opensea.png"-->
+<!--                        class="open-sea-logo"-->
+<!--                        alt="Open sea logo"-->
+<!--                >-->
+<!--            </div>-->
+            <div *ngIf="isLive" class="video-action">
+                <app-raise-hand-button></app-raise-hand-button>
+            </div>
+            <div class="video-action">
+                <app-donate-button [room]="room"></app-donate-button>
+            </div>
+            <div class="video-action">
+                <app-like-button [videoId]="video?.id" [likes]="video?.likes"></app-like-button>
+            </div>
+            <div class="video-action">
+                <app-share [videoUrl]="video?.videoFileUrl"></app-share>
+            </div>
+        </div>
+    </div>
+    <div class="video-date-container fx-row align-items-center" *ngIf="mob.isMobile()">
+        <div class="video-date">{{video?.time | date}} - {{video?.views}} views</div>
+        <div>
+            <span class="stream-topic1">{{room.roomTopic}}</span>
+        </div>
+    </div>
+    <div *ngIf="mob.isMobile()"  class="fx-space-between margin-bottom-8 mobile-actions-bar" [ngClass]="{ 'video-title-container' : mob.isDesktop() }">
+        <div class="fx fx-center-items align-items-center" [ngClass]="{ 'video-actions' : mob.isDesktop() }">
+            <div *ngIf="video?.ipfsMetaData" class="fx-center-items video-action">
+                <img
+                        matTooltipPosition="below"
+                        matTooltip="Video metadata on IPFS"
+                        (click)="goToIpfs()"
+                        src="/assets/logos/ipfs.png"
+                        class="ipfs-logo"
+                        alt="IPFS logo"
+                >
+            </div>
+            <div class="fx-center-items video-action-disabled">
+                <img
+                        matTooltip="Coming soon"
+                        matTooltipPosition="below"
+                        #tooltip="matTooltip"
+                        (click)="tooltip.toggle()"
+                        src="/assets/logos/opensea.png"
+                        class="open-sea-logo"
+                        alt="Open sea logo"
+                >
+            </div>
+            <div *ngIf="isLive" class="video-action">
+                <app-raise-hand-button></app-raise-hand-button>
+            </div>
+            <div class="video-action">
+                <app-donate-button [room]="room"></app-donate-button>
+            </div>
+            <div class="video-action">
+                <app-like-button [videoId]="video?.id" [likes]="video?.likes"></app-like-button>
+            </div>
+            <div class="video-action">
+                <app-share [videoUrl]="video?.videoFileUrl"></app-share>
+            </div>
+        </div>
+    </div>
+    <div class="video-date-container fx-row align-items-center" *ngIf="mob.isDesktop()">
+        <div class="video-date">{{video?.time | date}} - {{video?.views}} views</div>
+        <div>
+            <span class="stream-topic1">{{room.roomTopic}}</span>
+        </div>
+    </div>
+    <hr class="margin-bottom-16" [ngClass]="{ 'margin-top-24' : mob.isDesktop() }">
+    <div *ngIf="!mob.isMobile()" class="video-channel-container fx-row align-items-center margin-top-16">
+        <ng-container *ngIf="showTitle">
+            <div>
+                <app-channel-icon [small]="true" [isPremium]="room.premium" [iconUrl]="room.avatarAzureUrl"></app-channel-icon>
+            </div>
+            <div class="channel-data">
+            <span class="channel-name">
+                <span class="room-title">{{room.roomTitle}}</span>
+                <app-premium-tick [isVerified]="room.premium"></app-premium-tick>
+            </span>
+                <div class="channel-topic">{{room.roomDescription}}</div>
+                <div class="channel-topic">{{room.bioText}}</div>
+            </div>
+            <div class="channel-subscribe fx-end">
+                <app-subscribe-button [channelId]="room.id"></app-subscribe-button>
+            </div>
+            <div class="lens-follow-button">
+                <app-lens-follow-button [authorId]="room.id"></app-lens-follow-button>
+            </div>
+        </ng-container>
+    </div>
+    <div class="video-channel-container fx-row align-items-center margin-top-16" *ngIf="mob.isMobile()">
+        <div>
+            <app-channel-icon [small]="true" [isPremium]="room.premium" [iconUrl]="room.avatarAzureUrl"></app-channel-icon>
+        </div>
+        <div class="channel-data">
+            <span class="channel-name">
+                <span class="room-title">{{room.roomTitle}}</span>
+                <app-premium-tick [isVerified]="room.premium"></app-premium-tick>
+            </span>
+            <div class="channel-topic">{{room.roomDescription}}</div>
+            <div class="channel-topic">{{room.bioText}}</div>
+        </div>
+    </div>
+</div>

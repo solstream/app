@@ -1,0 +1,41 @@
+
+<div class="admin-page-container">
+    <h2>WITHDRAWALS</h2>
+
+    <div class="fx-column">
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Requested">
+                <app-admin-withdrawals-table
+                    status="requested"
+                    [showEditOptions]="true"
+                ></app-admin-withdrawals-table>
+            </mat-tab>
+            <mat-tab label="Approved">
+                <app-admin-withdrawals-table
+                    status="approved"
+                    [showTransferOption]="true"
+                ></app-admin-withdrawals-table>
+            </mat-tab>
+
+            <mat-tab label="Rejected">
+                <app-admin-withdrawals-table
+                    status="rejected"
+                ></app-admin-withdrawals-table>
+            </mat-tab>
+
+            <mat-tab label="Transferred">
+                <app-admin-withdrawals-table
+                    status="transferred"
+                ></app-admin-withdrawals-table>
+            </mat-tab>
+
+            <mat-tab label="Error">
+                <app-admin-withdrawals-table
+                    status="error"
+                ></app-admin-withdrawals-table>
+            </mat-tab>
+
+        </mat-tab-group>
+    </div>
+
+</div>

@@ -1,0 +1,18 @@
+<ng-container *ngIf="mode === 'icon'">
+    <img *ngIf="!mob.isMobile()" class="button-icon pointer login" (click)="phantomLogin()"
+         src="/assets/icons/login-btn.png"/>
+    <img *ngIf="!mob.isMobile()" class="button-icon pointer login" src="/assets/icons/login-btn.png"/>
+    <div *ngIf="mob.isMobile()">
+        <mat-icon [matMenuTriggerFor]="menuUser" class="mat-icon material-icons burger-menu" role="img"
+                  aria-hidden="true">menu
+        </mat-icon>
+        <mat-menu #menuUser="matMenu" class="user-menu">
+            <button mat-menu-item>
+                LOGIN
+            </button>
+        </mat-menu>
+    </div>
+</ng-container>
+<ng-container *ngIf="mode === 'button'">
+    <button class="light-button" mat-raised-button (click)="phantomLogin()">VIA MY PHANTOM</button>
+</ng-container>

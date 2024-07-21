@@ -1,0 +1,145 @@
+@import "../../../../variables";
+
+.fx-container {
+  width: 100%;
+}
+
+//.column {
+//
+//}
+
+.stream-container {
+  border-left: 1px solid $papelBlack2;
+  border-right: 1px solid $papelBlack2;
+  overflow: scroll;
+}
+
+.video-container {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  background-color: $papelBlack0;
+}
+
+.video-description {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  //height: 150px;
+  //border-bottom: 1px solid $papelGray1;
+  //border-top: 1px solid $papelGray1;
+  display: flex;
+  background-image: $papelGradient1;
+}
+
+.video-details {
+  height: 300px;
+  padding: 1rem 0 0 1rem;
+}
+
+//-------------------------------------
+.channel {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+.channels-page-container {
+  display: flex;
+  overflow: hidden;
+  height: calc(100% - 75px);
+
+  .main {
+    flex: 1;
+  }
+}
+
+.channels-title {
+  padding: 10px;
+  border-bottom: 1px solid $papelBlack2;
+  display: flex;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+}
+
+.channel-image {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.channel-data, .channel-stats {
+  color: $papelWhite1;
+}
+
+.channel-data {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.channel-topic {
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  margin-top: 2px;
+}
+
+.stream-topic {
+  margin-top: 15px;
+}
+
+.channel-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  background-color: red;
+  border-radius: 100px;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 5px;
+}
+
+
+
+.welcome {
+  height: 20px;
+  margin: 10px;
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  justify-content: center;
+}
+
+.stream-container .channel-name {
+  color: $papelWhite0!important;
+}
+
+app-stream-video {
+  width: 100%;
+  height: 100%;
+}
+
+.tv {
+  font-size: 60px;
+  color: $papelGray1;
+  margin-top: -28px;
+}
+
+.about-header {
+  height: 40px;
+  border-bottom: 1px solid $papelBlack2;
+  display: flex;
+  width: 100%;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+}
+.channel-page {
+  .channels-page-container {
+    height: 100%;
+  }
+  height: calc(100% - 70px)!important;
+}

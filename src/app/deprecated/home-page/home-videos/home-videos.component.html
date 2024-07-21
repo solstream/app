@@ -1,0 +1,27 @@
+<div class="uploaded-videos">
+    <h4 *ngIf="!mob.isMobile()">
+        <span *ngIf="uploadedVideo?.length > 0">
+            Latest videos<img class="title-icon" src="/assets/icons/video.png"/>
+        </span>
+    </h4>
+    <div *ngIf="mob.isMobile()" class="popular-content-title">recently uploaded videos <img style="width: 20px; margin-left: 0.5rem" class="title-icon" src="/assets/icons/video.png"/></div>
+    <div *ngIf="!mob.isMobile()">
+        <div [class.video-card-wrapper-s]="true" *ngFor="let uploadedVideo of uploadedVideo">
+            <app-video-card [showType]="false"
+                            [homePage]="true"
+                            [showRoomData]="true"
+                            (videoCardClicked)="videoCardClicked($event)"
+                            [video]="uploadedVideo"></app-video-card>
+        </div>
+<!--        <div id="show-heroes-adv" class="show-heroes-adv"></div>-->
+    </div>
+    <div *ngIf="mob.isMobile()" class="hor-scroll-container">
+        <div class="hor-list-items-container">
+            <div [class.video-card-wrapper-mob]="true" *ngFor="let uploadedVideo of uploadedVideo">
+                <app-video-card [showType]="false"
+                                [showRoomData]="true"
+                                (videoCardClicked)="videoCardClicked($event)"
+                                [video]="uploadedVideo"></app-video-card>
+            </div>
+        </div>
+    </div>

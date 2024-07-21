@@ -1,0 +1,86 @@
+.container {
+  width: 100%; background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding-top: 56.25%; /* 9:16 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
+}
+.container-empty {
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 56.25%; /* 9:16 Aspect Ratio */
+  position: relative; /* If you want text inside of it */
+}
+
+.chip-container {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute; text-align: right;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+  .mat-chip-list-wrapper {
+    display: block;
+  }
+
+}
+
+.channel-card-image {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+app-papeltv-logo {
+  height: 100%; width: 100%; position: absolute; top: 0
+}
+
+.parent {
+  overflow: hidden;
+  position:relative;
+}
+
+.child {
+  height: 100%;
+  width: 100%;
+
+  background-repeat: no-repeat;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+
+
+.parent:hover .child, .parent:focus .child {
+  -ms-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.parent:hover .child:before, .parent:focus .child:before {
+  display: block;
+}
+
+.parent:hover a, .parent:focus a {
+  display: block;
+}
+
+.child:before {
+  content: "";
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(52,73,94,0.75);
+}
+
+/* Media Queries */
+@media screen and (max-width: 960px) {
+  .parent {width: 100%;}
+  .wrapper {padding: 20px 20px;}
+}

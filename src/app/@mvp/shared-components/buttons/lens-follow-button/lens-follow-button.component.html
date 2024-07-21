@@ -1,0 +1,23 @@
+<div class="channel-subscribe fx-end"   matTooltipPosition="below"
+     *ngIf="isVisible">
+    <button (click)="follow()" 
+            mat-raised-button  class="light-button-lens"
+            [disabled]="disabled"
+            >
+<!--        <img class="lens-logo" src="assets/logos/lenslogo.png"/>-->
+        <span class="" *ngIf="!isFollowing(); else unfollow">
+            FOLLOW</span>
+        <ng-template #unfollow>UNFOLLOW</ng-template>        
+    </button>
+</div>
+<!--<div class="channel-subscribe fx-end"   matTooltipPosition="below"-->
+<!--     matTooltip="The user does not have a Lens account. You can not follow him on Lens."-->
+<!--     *ngIf="!isVisible">-->
+<!--            <button mat-raised-button  class="light-button-lens"-->
+<!--            [disabled]="disabled" >-->
+<!--        <img class=""/>-->
+<!--        <span class="" *ngIf="!isFollowing(); else unfollow">-->
+<!--            FOLLOW</span>-->
+<!--        <ng-template #unfollow>UNFOLLOW</ng-template>-->
+<!--    </button>-->
+<!--</div>-->

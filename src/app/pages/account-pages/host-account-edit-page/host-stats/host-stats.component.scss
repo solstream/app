@@ -1,0 +1,68 @@
+@import "../../../../../variables";
+
+.about-header {
+  height: 40px;
+  border-bottom: 1px solid $papelBlack2;
+  display: flex;
+  width: 100%;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+}
+
+.about-container {
+  font-size: 0.75rem;
+  //text-align: center;
+  color: $papelWhite1;
+  padding: 0.5rem;
+
+  .empty-message {
+    font-style: italic;
+    color: $papelWhite0;
+  }
+
+  .bio-text {
+    width: 100%;
+    font-size: 0.95rem;
+    color: $papelBlack0 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+  .empty-message {
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+}
+
+.edit-bio-container {
+  padding: 0.5rem;
+  width: 100%;
+  //display: flex;
+
+
+
+  &__actions {
+    text-align: right;
+
+    button {
+      margin-left: 0.5rem;
+    }
+
+  }
+}
+
+
+.ad-iframe {
+  margin-top: 10px;
+  padding: 20px;
+}

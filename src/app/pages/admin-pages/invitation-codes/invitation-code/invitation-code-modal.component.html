@@ -1,0 +1,41 @@
+<div class="fx-container u-p-1">
+    <h2 *ngIf="editMode">Edit Code</h2>
+    <h2 *ngIf="!editMode">New Code</h2>
+    <div [formGroup]="codeForm" class="u-fw">
+        <div class="fx-row">
+            <mat-form-field appearance="outline">
+                <mat-label>Code</mat-label>
+                <input formControlName="code" matInput>
+            </mat-form-field>
+        </div>
+        <div class="fx-row">
+            <mat-form-field appearance="outline">
+                <mat-label>Limit</mat-label>
+                <input type="number" formControlName="usageLimit" matInput>
+            </mat-form-field>
+        </div>
+        <div>
+            <button *ngIf="saving" mat-raised-button class="light-button" style="pointer-events: none"
+                    [disabled]="true">
+                <div style="width: 107px"
+                     class="white-color">
+                    <i class="fa fa-spinner fa-spin"></i>
+                    SAVING...
+                </div>
+            </button>
+            <button *ngIf="!saving"
+                    mat-raised-button
+                    class="standard-button-purple"
+                    (click)="save()">
+                <span class="black-text">SAVE</span>
+            </button>
+            <button *ngIf="!saving"
+                    [disabled]="saving"
+                    mat-raised-button
+                    class="light-button"
+                    (click)="cancel()">
+                <span>CANCEL</span>
+            </button>
+        </div>
+    </div>
+</div>

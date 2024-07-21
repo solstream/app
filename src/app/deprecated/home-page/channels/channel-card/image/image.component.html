@@ -1,0 +1,18 @@
+<div class="parent">
+    <div class="channel-card-image child"
+         [class.container]="hasBackground() || room?.isLive"
+         [class.container-empty]="!hasBackground()" [style.background-size]="getBackgroundSize()"
+         [style.background-image]="getBackgroundImageUrl()">
+        <div class="chip-container">
+            <!--        TODO use component -->
+            <!--        <mat-chip-list *ngIf="!room?.isLive" aria-label="Offline">-->
+            <!--            <mat-chip>Offline</mat-chip>-->
+            <!--        </mat-chip-list>-->
+            <!--        <mat-chip-list *ngIf="room?.isLive"  aria-label="LIVE">-->
+            <!--            <mat-chip color="primary" selected>LIVE</mat-chip>-->
+            <!--        </mat-chip-list>-->
+<!--            <app-offline-chip *ngIf="!room?.isLive"></app-offline-chip>-->
+            <app-live-chip *ngIf="room?.isLive"></app-live-chip>
+        </div>
+    </div>
+</div>

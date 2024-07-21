@@ -1,0 +1,11 @@
+<div class="stream-video-list">
+    <div *ngFor="let videoItem of items" class="video-list-item">
+        <app-video-item style="width: 100%"
+                        [carouselVideoItemId]="videoItem.id"
+                        [selected]="isVideoItemSelected(videoItem)"
+                        (itemClicked)="videoItemClicked1($event)"
+                        [pictureUrl]="videoItem.snapShotUrl">
+        </app-video-item>
+    </div>
+</div>
+<!--{{selectedItemId | json}}-->

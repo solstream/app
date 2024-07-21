@@ -1,0 +1,84 @@
+<mat-card>
+    <mat-card-title><h3><b>VIDEO UPLOAD</b></h3></mat-card-title>
+    <mat-card-content>
+        <div *ngIf="!videoUploadRestrictions" style="height: 300px;" class="fx-center-items">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div style="height: 300px;" class="fx-center-items" *ngIf="videoUploadRestrictions?.allowed === false">
+            <div class="info-message">{{videoUploadRestrictions.message}}</div>
+        </div>
+        <ng-container *ngIf="videoUploadRestrictions?.allowed">
+            <div *ngIf="apiError" style="height: 300px;" class="fx-center-items">
+                <div class="info-message">
+                    <mat-error>
+                        <strong>{{apiError}}</strong>
+                    </mat-error>
+                </div>
+            </div>
+            <ng-container *ngIf="!apiError">
+                <div *ngIf="uploadingInProgress" style="height: 300px; width: 100%;" class="fx-center-items fx-column">
+                    <div style="width: 100%; padding-bottom: 1.5rem" class="fx-row pd-1">
+                        <div>
+                            <img style="height: 125px" [src]="snapshotUrl">
+                        </div>
+                        <div style="margin: 1.5rem">
+                            <h3>Title: {{titleControl?.value}}</h3>
+                            <h3>Size: {{videoFileToUpload?.size | filesize}}</h3>
+                        </div>
+                    </div>
+                    <app-upload-progress-bar style="width: 100%" [uploadPercentSubject]="uploadProgressPercentage"
+                                             class="progress-bar">
+                    </app-upload-progress-bar>
+                </div>
+                <ng-container *ngIf="!uploadingInProgress">
+                    <div class="upload-form-field">
+                        <mat-form-field appearance="outline" class="form-field">
+                            <mat-label>Title</mat-label>
+                            <input matInput placeholder="Title" id="title" type="text" [formControl]="titleControl">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <ngx-file-drag-drop
+                                [activeBorderColor]="'none'"
+                                activeBorderColor="#3F51B5"
+                                multiple="false"
+                                accept="video/mpeg, video/mp4, video/avi"
+                                (valueChanged)="onFileSelected($event)">
+                        </ngx-file-drag-drop>
+                        <p>
+                            Maximum allowed size <span *ngIf="videoUploadRestrictions.maxSize < 0">2 GB</span> <span
+                                *ngIf="videoUploadRestrictions.maxSize > 0">{{videoUploadRestrictions.maxSize}}
+                            MB</span>.
+                            One video per upload.
+                        </p>
+                        <mat-error *ngIf="fileValidationError">
+                            <strong>{{fileValidationError}}</strong>
+                        </mat-error>
+                        <app-video-snapshot-select *ngIf="videoFileToUpload"
+                                                   [videoFile]="videoFileToUpload"
+                                                   (imageSelected)="snapShotSelected($event)"></app-video-snapshot-select>
+                        <p>
+                            Please respect the rules for content. More info available
+                            <a class="white-color" href="community-guidelines">here</a>.
+                        </p>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <div style="padding-bottom: 1rem">
+            <button *ngIf="!uploadingInProgress && !apiError"
+                    mat-raised-button class="button-purple upload-button"
+                    [disabled]="!titleControl.valid || videoFileToUpload == null || spanShotFile === null"
+                    (click)="uploadVideoFile()">
+                <span class="black-text pointer">UPLOAD</span>
+            </button>
+            <button *ngIf="!uploadingInProgress" mat-raised-button class="light-button" (click)="hideModal()">
+                <span class="white-color pointer">CLOSE</span>
+            </button>
+        </div>
+    </mat-card-actions>
+
+</mat-card>

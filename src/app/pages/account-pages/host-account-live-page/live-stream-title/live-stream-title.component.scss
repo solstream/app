@@ -1,0 +1,196 @@
+@import "../../../../../variables";
+
+.fx-container {
+  width: 100%;
+}
+
+.column {
+  background-color: $papelBlack1;
+}
+
+.channel-actions button {
+  margin: 5px;
+}
+
+.stream-container {
+  border-left: 1px solid $papelBlack2;
+  border-right: 1px solid $papelBlack2;
+  overflow: scroll;
+}
+
+.video-container {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  background-color: $papelBlack0;
+}
+
+.video-description {
+  padding: 1rem;
+  background-image: $papelGradient1;
+}
+
+.video-details {
+  height: 300px;
+}
+
+//-------------------------------------
+.channel {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+}
+
+.channels-title {
+  padding: 10px;
+  border-bottom: 1px solid $papelBlack2;
+  display: flex;
+  color: $papelWhite1;
+  font-size: 0.85rem;
+}
+
+.channel-image {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.channel-stats {
+  color: $papelWhite1;
+}
+
+.channel-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  background-color: red;
+  border-radius: 100px;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 5px;
+}
+
+
+
+.welcome {
+  height: 20px;
+  margin: 10px;
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  justify-content: center;
+}
+
+.stream-container .channel-name {
+  color: $papelWhite0!important;
+}
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+.channel-actions {
+  //display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.channel-qr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+:host {
+  width: 100%;
+}
+
+@font-face {
+  font-family: Poppins;
+}
+.general-font {
+  font-family: poppins-regular;
+  color: #d2d2d2;
+}
+
+input, select, textarea{
+  color: #000000;
+}
+
+.start-streaming-button {
+  margin-left: 0.5rem;
+}
+.mobile-actions {
+  margin-top: 20px;
+}
+
+.interact-text {
+  color: $papelBlack2!important;
+}
+
+.actions-mobile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+@media (max-width: 800px) {
+  .actions-mobile {
+    flex-direction: column;
+  }
+  .interaction {
+    width: 100%;
+    margin: 5px;
+  }
+}
+.open-wallet-text {
+  float: right;
+}
+.fa-spinner {
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
+//.channel-data {
+//
+//}
+
+.channel-data {
+  padding-left: 1rem;
+  display: flex;
+  //flex: 1 1 auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  color: $papelWhite1;
+}
+
+.live-data-container {
+  display: flex;
+  flex: 1 1 auto;
+  padding-left: 2rem;
+  align-items: center;
+
+}
+
+
+.channel-topic {
+  font-size: 0.75rem;
+  color: $papelWhite0;
+  margin-top: 2px;
+}
+
+.channel-name {
+  color: $papelWhite0!important;
+}
+

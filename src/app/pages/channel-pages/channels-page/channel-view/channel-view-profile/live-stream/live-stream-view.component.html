@@ -1,0 +1,12 @@
+<app-dolby-io-video-player></app-dolby-io-video-player>
+<div *ngIf="isInvited" class="invitation-banner">
+    You have been invited
+    <button mat-raised-button class="light-button" (click)="join()">
+        <span>JOIN</span>
+    </button>
+    <button mat-raised-button class="light-button" (click)="decline()">
+        <span>DECLINE</span>
+    </button>
+    <i class="fa-solid fa-xmark close-icon"(click)="decline()"></i>
+</div>
+

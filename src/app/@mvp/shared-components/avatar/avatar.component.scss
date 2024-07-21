@@ -1,0 +1,55 @@
+.navbar-avatar {
+  border-radius: 100px;
+  width: 55px;
+  height: 55px;
+  vertical-align:middle;
+  padding: 5px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+.small-wrapper {
+  width: 30px;
+  height: 30px;
+}
+.avatar {
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.verified-avatar-icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: #0088ff;
+  width: 15px;
+  height: 15px;
+
+  //style for inner text
+  display: grid;
+  text-align: center;
+  line-height: 15px;
+  color: white;
+  font-size: 10px;
+  font-weight: bolder;
+}
+
+.circleborder {
+  //width: 300px;
+  //height: 80px;
+  border: double 3.5px transparent;
+  //border-radius: 80px;
+  //background:linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  //background-image: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left,#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}

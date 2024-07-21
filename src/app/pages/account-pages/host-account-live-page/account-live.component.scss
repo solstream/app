@@ -1,0 +1,41 @@
+@import "../../../../variables";
+
+.fx-container {
+  width: 100%;
+}
+
+.stream-with-chart-container {
+  width: 100%;
+  height: calc(100vh - 175px);
+}
+
+.stream-container {
+  border-left: 1px solid #242424;
+  border-right: 1px solid #242424;
+  overflow: scroll;
+}
+
+.column {
+  background-color: $papelBlack1;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+.video-container {
+  height: calc(42vw);
+  background-color: $papelBlack0;
+}
+
+//.tv {
+//  font-size: 60px;
+//  color: $papelGray1;
+//  margin-top: -28px;
+//}
+//
+//.mat-drawer-content {
+//  height: 100%!important;
+//  display: block!important;
+//}
+

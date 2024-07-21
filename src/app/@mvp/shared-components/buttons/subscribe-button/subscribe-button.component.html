@@ -1,0 +1,6 @@
+<div class="channel-subscribe fx-end">
+    <button [disabled]="disabled" (click)="toggleSubscribe()" mat-raised-button  class="light-button">
+        <span class="white-color" *ngIf="!isSubscribed(); else unsubscribe">SUBSCRIBE</span>
+        <ng-template #unsubscribe>UNSUBSCRIBE</ng-template>
+    </button>
+</div>

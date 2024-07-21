@@ -1,0 +1,73 @@
+<div class="wallet-container">
+    <div class="section-hr"></div>
+    <div class="balance-bar">
+        <div *ngIf="device.isDesktop()" class="section-header fx-row">
+            <div class="box">
+                <app-avatar [isPremium]="isPremium" [avatarSrc]="avatarSrc"></app-avatar>
+                <div>{{roomName}}</div>
+            </div>
+        </div>
+        <hr class="left-side-hr"/>
+<!--        <h3 class="section-title" *ngIf="hasWallet()">Wallet</h3>-->
+<!--        <h3 class="section-title" *ngIf="!hasWallet()">-->
+<!--            <button mat-button color="primary" (click)="connectWallet()" class="light-button">Connect your wallet</button>-->
+<!--        </h3>-->
+        <div class="blocks fx-left-items table-container">
+            <ng-container *ngIf="hasWallet()">
+                <div class="balance-topic">
+                    <p>{{tokenomics.solSymbol}}</p>
+                    <p>{{getSolBalance()}}</p>
+                    <p>${{getSolBalanceDollars()}}</p>
+                </div>
+                <div class="balance-topic">
+                    <p>{{tokenomics.solstreamSymbol}}</p>
+                    <p>{{getSolStreamBalance()}}</p>
+                    <p>${{getSolStreamBalanceDollars()}}</p>
+                </div>
+                <div class="balance-topic" (click)="goUserDomainDetail()" style='cursor:pointer'>
+                    <p>Domain</p>
+                    <p>{{getUserDomainBalance()}}</p>
+                    <!-- <p></p> -->
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+<!--    <hr class="left-side-hr"/>-->
+<!--    <h3 class="section-title">Earnings</h3>-->
+<!--    <div class="blocks fx-left-items table-container">-->
+<!--        <div class="balance-topic">-->
+<!--            <p>{{tokenomics.solstreamSymbol}}</p>-->
+<!--            <p>{{solstreamBalance}}</p>-->
+<!--            <p>$ {{solstreamToDollar(solstreamBalance)}}</p>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div>
+
+        <hr class="left-side-hr"/>
+        <h3 class="section-title">Stats</h3>
+        <div class="blocks fx-left-items table-container">
+
+            <div *ngIf="stats?.statsTotal?.totalMinutesStreamed"
+                 class="balance-topic">
+                <p>Total Live</p>
+                <p>
+                    {{stats?.statsTotal?.totalMinutesStreamed}} min
+                </p>
+            </div>
+            <div class="balance-topic" *ngIf="room?.views">
+                <p>Room views</p>
+                <p>{{room.views}}</p>
+            </div>
+            <div class="balance-topic">
+                <p>Stream to</p>
+                <p *ngIf="stats?.streamViews > 1">{{stats?.streamViews}} users</p>
+                <p *ngIf="stats?.streamViews === 1">{{stats?.streamViews}} user</p>
+                <p *ngIf="stats?.streamViews === 0">{{stats?.streamViews}} users</p>
+                <p *ngIf="!stats?.streamViews">0 users</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

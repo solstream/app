@@ -1,0 +1,59 @@
+<div class="modal-container">
+    <h3><b>Interact</b></h3>
+    <div *ngIf="!currentChoice" class="interact-actions container">
+
+        <button mat-raised-button class="button-purple interaction" (click)="chooseInteraction(interactions.Donate)">
+            <span *ngIf="isBNBNetwork" class="black-text pointer">DONATE BNB</span>
+            <span *ngIf="isMATICNetwork" class="black-text pointer">DONATE MATIC</span>
+        </button>
+
+        <button
+                matTooltip="Soon available"
+                aria-label="Button that displays a tooltip when focused or hovered over"
+                mat-raised-button class="light-button light-disabled interaction">
+            <span class="grey-color">PLAY SOUND</span>
+        </button>
+
+        <button
+                matTooltip="Soon available"
+                aria-label="Button that displays a tooltip when focused or hovered over"
+                mat-raised-button class="light-button light-disabled interaction">
+            <span class="grey-color">SEND STICKER</span>
+        </button>
+        <button mat-raised-button class="light-button interaction" (click)="onNoClick()">
+            CANCEL
+        </button>
+    </div>
+    <div class="single-action container" [formGroup]="codeForm">
+        <ng-container [ngSwitch]="currentChoice">
+            <button *ngIf="currentChoice"  (click)="back()"
+                    mat-raised-button class="light-button interaction">
+                BACK
+            </button>
+
+
+            <ng-container *ngSwitchCase=" interactions.Donate">
+                <mat-form-field class="interaction" appearance="fill">
+                    <mat-label>$</mat-label>
+                    <input type="number" matInput [min]="0.01" formControlName="dollarAmount"
+                           [(ngModel)]="dollarAmount" (change)="setBnbPriceAfterAmountChange()"
+                           placeholder="Etc. 5$">
+                    <mat-error *ngIf="codeForm.controls.dollarAmount.hasError('min')">Please enter a valid amount</mat-error>
+                </mat-form-field>
+                <mat-error *ngIf="errorBNBPrice">Unable to get BNB price at the moment. Please try later.</mat-error>
+
+                <button *ngIf="!sendingTransaction" mat-raised-button class="button-purple interaction" [disabled]="!bnbToSend || !bnbToSendScren || codeForm.controls.dollarAmount.hasError('min')" (click)="donateBNB()">
+                    <i *ngIf="loadingAmount" class="fa fa-spinner fa-spin"></i>
+                    <span class="black-text">SEND {{bnbToSendScren}} BNB</span>
+                </button>
+
+                <button mat-raised-button disabled class="light-button disabled disabled-cursor"
+                        *ngIf="sendingTransaction"[disabled]="!bnbToSend || !bnbToSendScren"
+                        (click)="donateBNB()">
+                    <i class="fa fa-spinner fa-spin"></i>
+                    <span class="grey-color">Open your wallet...</span>
+                </button>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

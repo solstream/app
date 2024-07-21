@@ -1,0 +1,35 @@
+@import "../../../../../../../variables";
+
+.mat-card-title {
+  font-size: 1rem !important;
+}
+
+.mat-card {
+  background: $papelBlack1;
+}
+
+.mat-card-actions {
+  padding-bottom: 1rem;
+}
+
+mat-card-content {
+  min-height: 350px
+}
+
+h3 {
+  margin-top: 0.5rem !important;
+}
+ngx-file-drag-drop {
+  height: 120px;
+  max-width: 900px !important;
+}
+
+.upload-button {
+  margin-right: 10px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+

@@ -1,0 +1,44 @@
+@import "../../../../../../variables";
+
+:host {
+  width: 100%;
+}
+
+.room-header-container {
+  padding:1rem;
+  background-image: $papelGradient1;
+}
+
+.channel-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.channel-actions button {
+  margin: 5px;
+}
+
+.channel-actions-mob button {
+  margin: 5px;
+}
+
+.channel-actions-mob {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Existing .light-button styles */
+.light-button {
+  background-color: black!important; /* Your existing styles */
+  color: white; /* Example original text color */
+  /* Other styling as needed */
+}
+
+/* New .disabled-button styles */
+.disabled-button {
+  color: #cccccc; /* Slightly darker text color for disabled state */
+}

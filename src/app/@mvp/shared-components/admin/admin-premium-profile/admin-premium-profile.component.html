@@ -1,0 +1,7 @@
+<mat-slide-toggle style="margin: 10px" *ngIf="shouldBeDisplayed()"
+                  [(ngModel)]="isPremium"
+                  [disabled]="disabled"
+                  (change)="change($event)"
+                  color="warn">
+    PREMIUM
+</mat-slide-toggle>

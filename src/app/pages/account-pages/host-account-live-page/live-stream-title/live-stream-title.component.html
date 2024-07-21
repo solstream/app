@@ -1,0 +1,104 @@
+<div *ngIf="room" class="video-description" style="min-height: 65px">
+    <div *ngIf="!mob.isMobile()" class="fx-row">
+        <div *ngIf="(scx.streamTitle$ | async)" class="channel-data" style="min-height: 63px">
+            <div class="channel-name">{{(scx.streamTitle$ | async)}}</div>
+            <div class="channel-topic">{{room.roomTitle}}</div>
+            <app-premium-tick [isVerified]="room.premium"></app-premium-tick>
+        </div>
+        <div class="live-data-container">
+            <app-live-counter *ngIf="(scx.live$ | async)" (limitReached)="counterLimitReached()"></app-live-counter>
+        </div>
+        <div *ngIf="!(scx.video$ | async) && (scx.live$ | async) && streamingActionsEnabled"
+             class="channel-actions">
+            <button (click)="video(true)"
+                    mat-raised-button class="standard-button-purple">
+                <span class="black-text">ENABLE VIDEO</span>
+            </button>
+        </div>
+        <div *ngIf="(scx.video$ | async) && (scx.live$ | async) && streamingActionsEnabled"
+             class="channel-actions">
+            <button (click)="video(false)"
+                    mat-raised-button class="standard-button-purple">
+                <span class="black-text">DISABLE VIDEO</span>
+            </button>
+        </div>
+        <div *ngIf="!(scx.screenShare$ | async) && (scx.live$ | async) && streamingActionsEnabled"
+             class="channel-actions">
+            <button (click)="screenShare(true)"
+                    mat-raised-button class="standard-button-purple">
+                <span class="black-text">SHARE SCREEN</span>
+            </button>
+        </div>
+        <div *ngIf="(scx.screenShare$ | async) && (scx.live$ | async)" class="channel-actions">
+            <button (click)="screenShare(false)"
+                    mat-raised-button class="standard-button-purple">
+                <span class="black-text">STOP SCREEN SHARE</span>
+            </button>
+        </div>
+        <div class="channel-actions">
+            <button *ngIf="(scx.live$ | async) && streamingActionsEnabled" (click)="stopStreaming()"
+                    class="light-button"
+                    mat-raised-button
+                    aria-label="Button that displays a tooltip when focused or hovered over">
+                STOP STREAM
+            </button>
+            <button [disabled]="true" *ngIf="(scx.live$ | async) === false && streamingActionsEnabled"
+                    (click)="stopStreaming()"
+                    class="light-button"
+                    mat-raised-button>
+                STOPPING STREAM...
+            </button>
+            <button [disabled]="true" *ngIf="(scx.live$ | async) && !streamingActionsEnabled"
+                    class="light-button"
+                    mat-raised-button>
+                STARTING STREAM...
+            </button>
+        </div>
+    </div>
+    <div *ngIf="mob.isMobile()" class="fx-column">
+        <div class="fx-row">
+            <div *ngIf="(scx.streamTitle$ | async)" class="channel-data" style="min-height: 63px">
+                <div class="channel-name">{{(scx.streamTitle$ | async)}}</div>
+                <div class="channel-topic">{{room.roomTitle}}</div>
+                <app-premium-tick [isVerified]="room.premium"></app-premium-tick>
+            </div>
+            <div class="live-data-container">
+                <app-live-counter *ngIf="(scx.live$ | async)" (limitReached)="counterLimitReached()"></app-live-counter>
+            </div>
+        </div>
+        <div class="fx-row">
+            <div *ngIf="!(scx.screenShare$ | async) && (scx.live$ | async) && streamingActionsEnabled"
+                 class="channel-actions">
+                <button (click)="screenShare(true)"
+                        mat-raised-button class="standard-button-purple">
+                    <span class="black-text">SHARE SCREEN</span>
+                </button>
+            </div>
+            <div *ngIf="(scx.screenShare$ | async) && (scx.live$ | async)" class="channel-actions">
+                <button (click)="screenShare(false)"
+                        mat-raised-button class="standard-button-purple">
+                    <span class="black-text">STOP SCREEN SHARE</span>
+                </button>
+            </div>
+            <div class="channel-actions">
+                <button *ngIf="(scx.live$ | async) && streamingActionsEnabled" (click)="stopStreaming()"
+                        class="light-button"
+                        mat-raised-button
+                        aria-label="Button that displays a tooltip when focused or hovered over">
+                    STOP STREAM
+                </button>
+                <button [disabled]="true" *ngIf="(scx.live$ | async) === false && streamingActionsEnabled"
+                        (click)="stopStreaming()"
+                        class="light-button"
+                        mat-raised-button>
+                    STOPPING STREAM...
+                </button>
+                <button [disabled]="true" *ngIf="(scx.live$ | async) && !streamingActionsEnabled"
+                        class="light-button"
+                        mat-raised-button>
+                    STARTING STREAM...
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div *ngIf="!isMobile" class="sidenav" [ngClass]="{'collapsed' : isCollapsed }">
+    <i (click)="collapse()" class="fa-solid fa-arrow-right-to-bracket"></i>
+    <div [ngClass]="{ 'margin-top-32' : isCollapsed }">
+        <app-channels-side-bar-list
+                           [showSignupBar]="!isCollapsed"
+                           [isCollapsed]="isCollapsed"
+        ></app-channels-side-bar-list>
+    </div>
+</div>

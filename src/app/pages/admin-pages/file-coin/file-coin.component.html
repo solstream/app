@@ -1,0 +1,13 @@
+<p>file-coin works!</p>
+<input (change)="fileSelected($event)" type="file"><br>
+{{file?.name | json}}<br>
+<button [disabled]="uploading" (click)="upload()" mat-button class="light-button">
+    <span *ngIf="!uploading">upload</span>
+    <span *ngIf="uploading" >uploading</span>
+</button>
+
+<div *ngFor="let n of uploadNames">
+    {{n}}
+</div>
+
+<!--<video autoplay controls style="height: 500px; width: 500px" src="https://bafybeibf7xagq4fzqcxeogueyrdjnorr6n5vtw745b42ocampl4dt3wegy.ipfs.dweb.link/lasisa.mp4"></video>-->

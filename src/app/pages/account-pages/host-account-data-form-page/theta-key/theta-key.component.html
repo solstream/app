@@ -1,0 +1,11 @@
+<h2>Start streaming on OBS today!
+    <mat-chip matTooltip="theta is a decentralized video streaming network">Via theta</mat-chip>
+</h2>
+<p *ngIf="streamKey !== null"> Stream Key: {{streamKey}}</p>
+<p *ngIf="streamKey !== null"> Server: {{serverKey}}</p>
+
+
+
+<button *ngIf="streamKey === null && loaded" [disabled]="creating" (click)="createKey()" mat-raised-button class="standard-button-purple">
+    Create Stream Key
+</button>

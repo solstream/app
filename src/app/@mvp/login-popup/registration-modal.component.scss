@@ -1,0 +1,94 @@
+@import "src/variables";
+
+.login-dialog mat-dialog-container {
+    background: #fff !important;
+    box-shadow: none !important;
+    padding: 0px !important;
+}
+
+.login-dialog-container {
+    background: #fff !important;
+    color: #000;
+    text-align: center;
+    position: relative;
+
+    .mat-dialog-content {
+        max-height: initial !important;
+        padding: 18px 50px !important;
+        margin: 0 !important;
+    }
+
+    .close-icon {
+        position: absolute;
+        right: 32px;
+        top: 16px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    h2 {
+        font-size: 36px;
+        color: #000 !important;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    i.icon-big {
+        font-size: 32px;
+
+    }
+    button {
+        display: block;
+        margin: 10px auto;
+
+        span {
+            color: #151515 !important;
+        }
+
+        &.social-media {
+            margin: 0px 5px 10px 5px;
+            display: inline;
+        }
+
+        &.light-button span {
+            color: #151515 !important;
+        }
+
+        &.standard-button-purple span {
+            color: #fff !important;
+        }
+    }
+
+
+    ul {
+        li {
+            list-style: none;
+        }
+        li:before {
+            font-family: 'FontAwesome';
+            content: '\f00c';
+            margin:0 5px 0 -15px;
+            color: #710093;
+        }
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: $sio4;
+        border-width: 2px !important;
+    }
+
+    .mat-input-element,
+    ::placeholder {
+        color: $papelGrey2 !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+        padding: 0;
+    }
+
+    .mat-form-field-subscript-wrapper {
+        position: initial;
+    }
+}

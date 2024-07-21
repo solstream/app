@@ -1,0 +1,16 @@
+<div class="modal-container">
+    <div>
+        <!-- <h3><b>Disclaimer</b></h3> -->
+        <p>
+            {{confirmMessage}}
+        </p>
+        <div class="mt-2 d-flex align-items-center justify-content-center g-2 buttons-pad">
+            <button mat-raised-button class="light-button"  (click)="hideModal()">
+                <span class="">Close</span>
+            </button>
+            <button mat-raised-button class="button-purple"  (click)="confirm()">
+                <span class="black-text pointer">Confirm</span>
+            </button>
+        </div>
+    </div>
+</div>

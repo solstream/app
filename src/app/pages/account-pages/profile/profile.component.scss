@@ -1,0 +1,59 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.avatar img {
+  border-radius: 50%; /* Creates a round avatar */
+  width: 100px; /* Sets the avatar size */
+  height: 100px;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  /* Hover effect for the avatar container */
+  cursor: pointer; /* Optional: Changes the cursor to indicate it's clickable */
+}
+
+.avatar_img {
+  width: 100px; /* Or the size of your avatar */
+  height: 100px; /* Or the size of your avatar */
+  border-radius: 50%; /* Makes the image round */
+}
+
+.avatar__options {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* Initially hide the upload options */
+  opacity: 0; /* Start fully transparent */
+  transition: opacity 0.3s ease; /* Smooth transition for the opacity */
+}
+
+.avatar:hover .avatar__options {
+  display: inline-block; /* Display the upload options on hover */
+  opacity: 1; /* Fully visible */
+}
+
+.upload_label {
+  cursor: pointer;
+  background-color: #fff; /* Adjust based on your design */
+  padding: 5px 10px;
+  border-radius: 5px;
+  /* Additional styling as needed */
+}
+
+input[type="file"] {
+  display: none; /* Keep the actual input hidden but accessible */
+}

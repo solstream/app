@@ -1,0 +1,53 @@
+@import "../../../../../../variables";
+
+.video-data {
+  background-color: $papelBlack2;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 1rem 1rem 0.4em;
+}
+
+.video-title {
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-stats {
+  font-size: 0.75rem;
+  margin-top: 2px;
+  color: $papelGrey1;
+}
+
+.channel-owner {
+  display: flex;
+  font-size: 0.75rem;
+  color: $papelGray1;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 0.25rem;
+  &__title {
+    margin-left: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+}
+
+.video-earned {
+  display: flex;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  min-height: 14px;
+
+  img {
+    height: 0.75rem;
+    margin-right: 0.25rem;
+    padding-top: 1px;
+  }
+}
+.mint-video {
+  display: block;
+}

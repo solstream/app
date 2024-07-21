@@ -1,0 +1,129 @@
+@import "../../../../variables";
+
+.top-stream-card {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.38), -12px 0 8px -4px rgba(0, 0, 0, 0.38);
+
+  margin: 2rem;
+  //height: 400px;
+  display: flex;
+
+  &__video {
+    background-color: black;
+  }
+
+  &__info-card {
+    width: 200px;
+    height: 100%;
+    border-left: 1px solid $papelWhite0;
+    &__bio {
+      font-size: 0.75rem;
+      color: $papelWhite0;
+      padding: 1rem;
+      flex: 1 1 auto
+    }
+    &__qr {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+  }
+}
+
+fa-icon {
+  font-size: 2rem;
+}
+
+
+.top-stream-card_mob {
+
+  box-shadow: 12px 0 15px -4px rgba(0, 0, 0, 0.38), -12px 0 8px -4px rgba(0, 0, 0, 0.38);
+  position: relative;
+  margin: 0.25rem;
+  width: 98%;
+  //border: 1px solid $papelWhite0;
+  display: flex;
+
+  &__video {
+    flex: 1 1 auto;
+  }
+
+  &__info-card {
+    height: 50px;
+    border-left: 1px solid $papelWhite0;
+    &__bio {
+      font-size: 0.75rem;
+      color: $papelWhite0;
+      padding: 1rem;
+      flex: 1 1 auto
+    }
+    &__qr {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+  }
+
+  button.previous, button.next {
+    z-index: 1;
+    position: absolute;
+    background: white;
+    padding: 5px 10px;
+    min-width: 0;
+    line-height: 24px;
+    top: 50%;
+    margin-top: -17px;
+  }
+
+  button.previous {
+    left: 8px;
+  }
+
+  button.next {
+    right: 8px;
+  }
+
+  fa-icon.previous, fa-icon.next {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+}
+
+fa-icon {
+  font-size: 2rem;
+}
+
+.rounded-stream {
+  border-radius: 5px 0 0 5px !important;
+}
+
+.responsive-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 721px;
+}
+
+@media (max-width: 1200px) {
+  .top-stream-card {
+    margin: 2rem 0;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+#container {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.fx-center-items-2 {
+  display: flex;
+  min-width: 800px;
+  justify-content: center;
+  align-items: center
+}

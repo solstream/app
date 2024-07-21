@@ -1,0 +1,30 @@
+export class Constants {
+  // public static readonly SESSION = 'domo_pro';
+  public static readonly USERNAME = 'ptv_user';
+  public static readonly METAMASK = 'ptv_meta';
+  public static readonly WALLET_CONNECT = 'walletconnect';
+  public static readonly USERNAMEOBSERVER = 'ptv_user_observer';
+  public static readonly DOLBY_KEY = 'dolby_key';
+  public static readonly DOLBY_SECRET = 'dolby_secret';
+  public static readonly PTV_JWT = 'ptv_jwt';
+  public static readonly W_JWT = 'w_jwt';
+  public static readonly DOLBY_API_KEY = 'dolby_api_key';
+  public static readonly FILE_MAX_VIDEO_SIZE_BYTES = 2147483648;
+  public static readonly FILE_MAX_IPFS_SIZE_BYTES = 80000000;
+  public static readonly VALID_VIDEO_FILE_EXTENSIONS = 'WEBM_MPG_MP2_MPEG_MPE_MPV_OGG_MP4_M4P_M4V_AVI_WMV_MOV_QT_FLV_SWF_AVCHD';
+  public static readonly NO_WHITE_SPACE_REGEX_PATTERN = '[\\S]*';
+  public static readonly TOKENSBALANCE = 'tb';
+  public static readonly SOLBALANCE = 'SolBalance';
+  public static readonly SOLBALANCEUSD = 'SolBalanceUSD';
+  public static readonly SOLSTREAMBALANCE = 'SolStreamBalance';
+  public static readonly UPLOADEDVIDEOSNUMBER = 'upv';
+  public static readonly SOLSTREAMBALANCEUSD = 'SolStreamBalanceUSD';
+  public static readonly BNBBALANCE = 'bb';
+  public static readonly MATICBALANCE = 'mb';
+  public static readonly SHOWCOOKIESBAR = 'scb';
+  public static readonly DEMO_DISCLAIMER = 'dd';
+  public static readonly SHOW_PISHING_ALERT_BAR = 'spab';
+  public static readonly WELCOME_ROOM_BOT_CONF = 'WELCOME_ROOM_BOT_CONF';
+  public static readonly WELCOME_ROOM_BOT_MSG = ['Hello', 'Ciao', 'Good Evening', 'Buonasera'];
+  public static readonly VIDEO_DISCLAIMER = 'vd';
+}

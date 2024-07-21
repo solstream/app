@@ -1,0 +1,19 @@
+<div class="recent-podcasts" [class.hor-scroll-container]="mob.isMobile()">
+    <ng-container *ngIf="content && !mob.isMobile()">
+        <div [class.video-card-wrapper-s]="true" *ngFor="let video of content">
+            <app-video-card (videoCardClicked)="videoCardClicked($event)"
+                            [video]="video"
+                            [showRoomData]="true"
+                            [editable]="false"></app-video-card>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="content && mob.isMobile()">
+        <div class="hor-list-items-container">
+            <div class="video-card-wrapper-mob" *ngFor="let video of content">
+                <app-video-card (videoCardClicked)="videoCardClicked($event)"
+                                [video]="video"
+                                [showRoomData]="true"></app-video-card>
+            </div>
+        </div>
+    </ng-container>
+</div>

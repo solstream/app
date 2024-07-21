@@ -1,0 +1,30 @@
+.vjs-carousel {
+  height: 365px;
+  min-height: 250px;
+  width: 650px;
+}
+
+.vjs-fw {
+  width: 100%; height: 100%;
+}
+
+.container-watch-button {
+  position: absolute;
+  margin: 1rem;
+  top: 0;
+  right: 0;
+}
+
+.record-button {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: 4px;
+}
+.border-radius {
+  border-radius: 10px!important;
+}
+video#gtvVideoPlayer_html5_api {
+  border-radius: 10px;
+}

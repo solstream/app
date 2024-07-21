@@ -1,0 +1,60 @@
+@import "../../../../variables";
+
+.earnings-container {
+  position: relative;
+  width: 95%;
+  padding-top: 60px;
+
+  .redeem-container {
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    right: 0;
+    top: 50px;
+
+    @media (max-width: 800px) {
+      top: 10px;
+    }
+  }
+
+  .redeem-btn {
+    z-index: 2;
+  }
+
+  .balance {
+    margin-right: 10px;
+  }
+
+  .loading-shade {
+    min-height: 400px;
+  }
+
+  table {
+    width: 100%;
+    min-width: 800px;
+    table-layout: fixed;
+    margin: 20px 0;
+
+    td {
+      width: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 15px;
+      vertical-align: middle;
+      line-height: 30px;
+    }
+  }
+
+  th.mat-header-cell {
+    text-align: left;
+    background-color: #9244cc!important;
+    font-size: 15px;
+    color: white;
+  }
+  
+}
+
+.mat-ink-bar {
+  background-color: $papelPurple1 !important;
+}

@@ -1,0 +1,98 @@
+@import '../../../../../variables';
+
+.parti-container {
+  width: 300px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#parti-action {
+  width: 300px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#parti {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  overflow: scroll;
+}
+
+button {
+  margin: 5px;
+}
+
+.raised {
+  color: $papelPurple1;
+  margin-right: 0.25rem;
+}
+
+.participant {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  border-radius: 10px;
+  margin-left: 0.5rem;
+  margin-right: 1.5rem;
+
+  img {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.parti-name {
+  border: 1px solid #6D6969;
+  background-color: #6d6969;
+  border-radius: 50px;
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  //padding-right: 0.25rem;
+  padding: 0.25rem;
+
+  span {
+    padding-left: 0.75rem;
+    padding-right: 0.25rem;
+  }
+
+  &.pending {
+    background-color: orange;
+    border: 1px solid orange;
+  }
+
+  &.rejected {
+    background-color: red;
+    border: 1px solid red;
+  }
+  &.active {
+    background-color: $papelPurple1;
+    border: 1px solid $papelPurple1;
+
+    .raised {
+      color: $papelGrey1;
+    }
+  }
+
+
+}
+
+.parti-avatar {
+  background-color: #400303;
+  border-radius: 50px;
+  height: 26px;
+  width: 26px;
+  margin: -6px;
+  color: darkgrey;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-actions {
+  i {
+    cursor: pointer;
+  }
+}

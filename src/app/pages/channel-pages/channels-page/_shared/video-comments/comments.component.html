@@ -1,0 +1,52 @@
+<div class="papel-black1" style="display: flex; height: 100%; flex-direction: column; ">
+    <div *ngIf="showTitle">
+        <i *ngIf="!isMobile" (click)="toggleChatWindow()" class="fa-solid fa-arrow-right-to-bracket"></i>
+        <div *ngIf="!isMobile" class="chat-title fx-center-items">
+            OTHERS COMMENTED ON THIS
+        </div>
+        <div *ngIf="isMobile" class="chat-title fx-center-items">
+            <div style="flex: 1 1 auto" class="fx-center-items">COMMENTS</div>
+            <mat-icon (click)="closeClicked.emit()">close</mat-icon>
+        </div>
+    </div>
+    <div #scrollToBottom class="chat-messages fx-column">
+        <div class="welcome">Leave a comment if you like!</div>
+        <div class="chat-message" *ngFor="let comment of comments, let i = index">
+            <div class="sender-avatar">
+                <app-avatar [size]="'small'" [avatarSrc]="comment.userAvatarUrl"></app-avatar>
+            </div>
+            <div class="comment">
+                <div class="send-info">
+                    <div class="sender-name" [ngStyle]="{'color': comment.color}">{{comment.userName}}</div>
+                    <app-premium-tick [isVerified]="comment.premium"></app-premium-tick>
+                    <div class="create-date">{{comment.createDate | createDateFormat}}</div>
+                </div>
+                <span class="comment-content">{{comment.text}}</span>
+                <div class="delete-container" *ngIf="isRoomOwner() || isCommentOwner(comment.userName)">
+                    <app-delete-icon-button (buttonClicked)="deleteComment(comment, i)"></app-delete-icon-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-send fx-column">
+        <div class="textarea-container">
+            <textarea *ngIf="isLoggedIn()" class="chat-area" rows="1" cols="10"
+                      [disabled]="false" (keyup.enter)="postComment(comment)" [(ngModel)]="comment"
+                      placeholder="Leave a public comment"></textarea>
+            <textarea *ngIf="!isLoggedIn()" class="chat-area" rows="1" cols="1"
+                      [disabled]="true" [(ngModel)]="comment"
+                      placeholder="Login to leave a public comment"></textarea>
+            <mat-icon class="picker" *ngIf="showEmojies && isLoggedIn()"
+                      (click)="toggled = !toggled"
+                      [(emojiPickerIf)]="toggled"
+                      [emojiPickerDirection]="'bottom' || 'top' || 'left' || 'right'"
+                      (emojiPickerSelect)="handleSelection($event)">face
+            </mat-icon>
+        </div>
+        <button [disabled]="!canSendMessage(comment)" (click)="postComment(comment)" mat-raised-button
+                class="standard-button-purple">
+            <span class="black-text">Comment</span>
+        </button>
+    </div>
+</div>
+

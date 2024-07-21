@@ -1,0 +1,92 @@
+<div id="top-bar-container" class="fixed">
+    <app-nav-bar></app-nav-bar>
+</div>
+<div id="player-content" class="post-fix-vid" style="position: fixed; top: 0; width: 100%; z-index: 999">
+<!--    <app-earn-progress *ngIf="showEarningsProgress()" [videoId]="videoInPlayer.id" [videoState]="videoState" [isMobile]="true"></app-earn-progress>-->
+    <div style="display: block" id="channelViewVideoContainer">
+        <div id="videoPlayer">
+            <div *ngIf="channelContentLoaded" [class.hidden]="showSpinner" class="channel-profile-video-container">
+                <div class="video">
+                    <div *ngIf="isDolbyLive || videoInPlayer.videoType === videoTypeObsLive" style="position: absolute; margin: 1rem;" class="live-chip-container">
+                        <app-live-chip></app-live-chip>
+                    </div>
+                    <app-video-js-player [video]="videoInPlayer"></app-video-js-player>
+<!--                    <app-videojs-player (play)="onPlay($event)" (pause)="onPause($event)" *ngIf="!isDolbyLive" [url]="videoFileUrl" [isTheta]="videoInPlayer.videoType === videoTypeObsLive"></app-videojs-player>-->
+                    <!-- NOTE current app-live-stream-view must destroyed and recreated to connect live-stream -->
+                    <!-- NOTE channelContentLoaded line 5 property will destroy and recreate -->
+                    <app-live-stream-view *ngIf="isDolbyLive" (videoEvent)="updateVideoState($event)" (joinFailed)="liveEnded()" (conferenceEnded)="liveEnded()" [room]="channel"
+                                          ></app-live-stream-view>
+                </div>
+            </div>
+            <div *ngIf="showSpinner" class="channel-profile-video-container">
+                <div class="video">
+                    <div style="height: 100%; width: 100%" class="fx-center-items">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="channel">
+    <div id="other-content" style="padding-bottom: 5rem" >
+        <div id="channel-videos-mob">
+            <div class="u-fw">
+                <app-video-title *ngIf="channel && !isDolbyLive"
+                                 [showTitle]="showTitle"
+                                 [video]="videoInPlayer"
+                                 [room]="channel"></app-video-title>
+                <app-video-title *ngIf="channel && isDolbyLive"
+                                 [showTitle]="showTitle"
+                                 [video]="dolbyStream"
+                                 [room]="channel"></app-video-title>
+                <mat-divider class="margin-top-16"></mat-divider>
+                <div (click)="changeShowMessages(true)" style="padding: 1rem">
+                    <span *ngIf="!isDolbyLive">Comments</span>
+                    <span *ngIf="isDolbyLive">Chat</span>
+                </div>
+                <mat-divider style="margin-bottom: 1rem;"></mat-divider>
+            </div>
+            <app-channel-view-live-recordings-list [liveRecordings]="liveRecordings"
+                                           (videoClicked)="videoCardClicked($event.video)">
+            </app-channel-view-live-recordings-list>
+            <app-channel-view-video-list [uploadedVideos]="uploadedVideos"
+                                         (videoClicked)="videoCardClicked($event.video)">
+            </app-channel-view-video-list>
+            <app-channel-view-pops-list [uploadedVideos]="pops"
+                                         (videoClicked)="videoCardClicked($event.video)">
+            </app-channel-view-pops-list>
+            <div style="padding-bottom: 2rem; padding-top: 1rem;" class="popular-content-title">
+                Content you might like
+            </div>
+            <div id="show-heroes-adv" class="show-heroes-adv"></div>
+            <div class="row">
+                <div *ngFor="let video of videosAndPodcasts.slice(0, 4)" class="column-4">
+                    <app-preview-card [video]="video"></app-preview-card>
+                </div>
+            </div>
+            <button *ngIf="!showAll && videosAndPodcasts.length > 4" class="papel-purple" mat-button
+                    (click)="showAll = true">
+                SHOW MORE
+            </button>
+            <ng-container *ngIf="showAll">
+                <div class="row">
+                    <div *ngFor="let video of videosAndPodcasts.slice(0, 4)" class="column-4">
+                        <app-preview-card [video]="video"></app-preview-card>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div style="display: none; z-index: 1000" id="message-container">
+        <div id="comments" style="height: 100%;">
+            <app-comments *ngIf="!isDolbyLive" (closeClicked)="changeShowMessages(false)" [userName]="'userName'"></app-comments>
+            <app-chat *ngIf="isDolbyLive" (closeClicked)="changeShowMessages(false)" [userName]="'userName'"></app-chat>
+        </div>
+    </div>
+
+</ng-container>
+<div style="position: fixed; bottom: 0; width: 100%; z-index: 99999">
+<!--    <app-sign-up-bar></app-sign-up-bar>-->
+</div>
+

@@ -1,0 +1,58 @@
+<ng-container *ngIf="ready">
+    <div *ngIf="hostRoom" #container class="">
+        <div class="host-room-content">
+            <div *ngIf="!uploadingBackgroundImage && !videoFileUrl" [style.background-image]="getBackgroundImageUrl()"
+                 class="container background-shadow">
+                <div class="layer">
+                    <div class="fx-center-items profile-image-container">
+                    </div>
+                    <div>
+                        <input style="display: none;" accept="image/*" type="file" class="file-input"
+                               (change)="uploadBackground($event)" #fileUpload>
+                        <button class="edit-icon"
+                                mat-fab color="primary" (click)="fileUpload.click()"
+                                style="background-color: #917c848a">
+                            <fa-icon [icon]="iconEdit" class="fa-light"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="uploadingBackgroundImage" class="container background-shadow">
+                <div class="layer">
+                    <div class="fx-center-items grey-color profile-image-container">
+                        Uploading image ...
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="videoFileUrl" class="channel-profile-video-container">
+                <div class="video">
+                    <video [class.hidden]="!videoReady" style="height: 100%;" controls autoplay playsinline>
+                        <source [src]="videoFileUrl">
+                    </video>
+                </div>
+            </div>
+            <div class="u-fw">
+                <app-host-room-action-header *ngIf="hostRoom"
+                                             [adminMode]="isAdmin()"
+                                             (videoUploaded)="videoUploaded()"
+                                             [room]="hostRoom"></app-host-room-action-header>
+            </div>
+            <app-wallet *ngIf="device.isMobile()"></app-wallet>
+
+            <app-recent-podcasts [podcasts]="recentPodcasts" *ngIf="recentPodcasts.length > 0"
+                                 (videoClicked)="container.scrollTop = 0;; showVideo($event.video)"
+                                 [roomId]="hostRoom.id">
+            </app-recent-podcasts>
+
+            <app-uploaded-videos [videos]="uploadedVideos" *ngIf="uploadedVideos.length > 0"
+                                 (videoClicked)="container.scrollTop = 0;; showVideo($event.video)"
+                                 [roomId]="hostRoom.id">
+            </app-uploaded-videos>
+            <app-uploaded-pops *ngIf="uploadedPops.length > 0" [videos]="uploadedPops"
+                               (videoClicked)="container.scrollTop = 0;; showVideo($event.video)"
+                               [roomId]="hostRoom.id">
+            </app-uploaded-pops>
+        </div>
+    </div>
+</ng-container>
+

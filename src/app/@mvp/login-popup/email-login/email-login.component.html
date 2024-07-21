@@ -1,0 +1,36 @@
+<h2 class="margin-bottom-32 remove-margin-top">Login</h2>
+<i class="fa-solid fa-arrow-right-to-bracket icon-big margin-bottom-48"></i>
+<div class="fx-center-items">
+    <div [formGroup]="codeForm" class="login-panel">
+        <mat-form-field appearance="outline">
+            <input [disabled]="false" formControlName="username" matInput email placeholder="Email">
+            <mat-error *ngIf="codeForm.get('username').hasError('pattern')">
+                <strong>{{validations.email}}</strong>
+            </mat-error>
+            <mat-error *ngIf="codeForm.get('username').hasError('required')">
+                <strong>{{validations.required}}</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input type="password" formControlName="password" matInput placeholder="Password">
+            <mat-error *ngIf="codeForm.get('password').hasError('required')">
+                <strong>{{validations.required}}</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="error === 'incorrect-credentials'">
+            The username or password is incorrect, please try again.
+        </mat-error>
+        <mat-error *ngIf="error === 'other'">
+            Something went wrong please try again later.
+        </mat-error>
+        <button (click)="userNameLogin()" class="standard-button-purple"
+                mat-raised-button>
+            <span class="black-text">Log in</span>
+        </button>
+        <div class="u-fw fx-row fx-space-between">
+            <a (click)="forgotPassword()" class="grey-color">Forgot you password?</a>
+            <a (click)="goBack()" class="grey-color">go back</a>
+        </div>
+    </div>
+</div>
+

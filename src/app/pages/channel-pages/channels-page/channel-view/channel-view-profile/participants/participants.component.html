@@ -1,0 +1,13 @@
+<div *ngIf="confParticipants.length > 1">
+    <h2>solstream SPACE</h2>
+    <div class="channel-view-parti-container">
+        <div class="participant" *ngFor="let confParticipant of confParticipants  | slice:0:4;">
+            <div class="parti-name">
+                <img matTooltip="{{confParticipant.info.name}}" src="{{confParticipant.info.avatarUrl}}" alt="">
+            </div>
+        </div>
+        <div *ngIf="confParticipants.length > 4" class="fx fx-center-items total-participants">
+            + {{confParticipants.length - 4}}
+        </div>
+    </div>
+</div>

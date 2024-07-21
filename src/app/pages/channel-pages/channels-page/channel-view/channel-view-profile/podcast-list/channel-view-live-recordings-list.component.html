@@ -1,0 +1,27 @@
+<div class="recent-podcasts">
+    <h4 *ngIf="!mob.isMobile() && liveRecordings?.length > 0">Recently streamed</h4>
+    <div style="padding-bottom: 2rem;" *ngIf="mob.isMobile() && liveRecordings?.length > 0" class="popular-content-title">
+        Recently streamed by <b style="font-size: 0.8rem">{{liveRecordings[0].roomTitle}}</b>
+        <app-premium-tick [isVerified]="liveRecordings[0].roomPremium"></app-premium-tick>
+    </div>
+    <ng-container *ngIf="liveRecordings">
+        <div *ngIf="!mob.isMobile()">
+            <div class="video-card-wrapper-m" *ngFor="let record of liveRecordings">
+                <app-preview-card [video]="record"></app-preview-card>
+            </div>
+        </div>
+        <div *ngIf="mob.isMobile()">
+            <div class="video-card-wrapper-fw" *ngFor="let podcast of liveRecordings.slice(0, 4)">
+                <app-preview-card [video]="podcast"></app-preview-card>
+            </div>
+            <button *ngIf="!showAllPodcasts && liveRecordings.length > 4" class="papel-purple" (click)="showAllPodcasts = true" mat-button>
+                SHOW MORE
+            </button>
+            <ng-container *ngIf="showAllPodcasts">
+                <div class="video-card-wrapper-fw" *ngFor="let podcast of liveRecordings.slice(4)">
+                    <app-preview-card [video]="podcast"></app-preview-card>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+</div>

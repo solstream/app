@@ -1,0 +1,63 @@
+<div *ngIf="!showSummary"  class="mat-dialog-container redeem-dialog-container">
+    <div *ngIf="isLoading" class="fx-center-items loading-shade">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!isLoading">
+        <h2 mat-dialog-title>Withdraw solstream</h2>
+        <hr>
+        <mat-dialog-content class="mat-typography">
+            <h3>Total balance: {{solstreamBalance}} solstream</h3>
+
+            <form [formGroup]="withdrawalForm">
+                <mat-form-field appearance="fill">
+                    <mat-label>Withdraw amount</mat-label>
+                    <input type="text" matInput formControlName="amount" TwoDecimalNumberDirective>
+                    <mat-error *ngIf="withdrawalForm.get('amount').errors?.required">
+                        Amount is required
+                    </mat-error>
+                    <mat-error *ngIf="withdrawalForm.get('amount').invalid && !withdrawalForm.get('amount').errors?.required">
+                        Amount should be greater than 0
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Wallet</mat-label>
+                    <input type="text" matInput formControlName="wallet">
+                    <mat-error *ngIf="withdrawalForm.get('wallet').errors?.required">
+                        Wallet is required
+                    </mat-error>
+                    <mat-error *ngIf="withdrawalForm.get('wallet').invalid && !withdrawalForm.get('wallet').errors?.required">
+                        The wallet you provided is invalid
+                    </mat-error>
+                </mat-form-field>
+            </form>
+
+            <span class="info">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">info</mat-icon>
+                <p>Withdraw costs {{withdrawFee}} solstream</p>
+            </span>
+
+            <mat-error *ngIf="notEnoughBalance">Not enough solstream</mat-error>
+            <mat-error *ngIf="showError">Something went wrong, please try again later</mat-error>
+
+        </mat-dialog-content>
+
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button (click)="withdrawsolstream()" cdkFocusInitial>Withdraw</button>
+        </mat-dialog-actions>
+    </div>
+
+</div>
+
+<div *ngIf="showSummary"  class="mat-dialog-container redeem-dialog-container">
+    <h2 mat-dialog-title>Withdraw solstream</h2>
+    <hr>
+    <mat-dialog-content class="mat-typography">
+        <h3>Succes!</h3>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>

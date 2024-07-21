@@ -1,0 +1,14 @@
+@import "../../../../../../variables";
+
+.stream-video-list {
+  //background-color: $videoItemsBackgroundColor;
+  margin: 2rem;
+
+  .video-list-item {
+    width: 20%;
+    border-color: darkgrey;
+    display: inline-block;
+    height: 100%;
+    cursor: pointer;
+  }
+}

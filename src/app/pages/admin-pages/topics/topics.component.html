@@ -1,0 +1,72 @@
+<div class="admin-page-container">
+    <h2>TOPICS</h2>
+
+    <div class="fx-column" style="width: 300px">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>New Topic Text</mat-label>
+            <input matInput type="text" [formControl]="topicControl">
+            <mat-error *ngIf="topicControl.touched && topicControl.invalid">Name should be unique and min 3 chars
+            </mat-error>
+        </mat-form-field>
+        <button [disabled]="topicControl.invalid" mat-button class="light-button" (click)="saveTopics()">create
+        </button>
+    </div>
+
+
+    <div class="main-topics-container">
+        <div class="topics-container">
+            <h3>
+                <span>All Topics</span>
+                <app-search-input (valueChanged)="searchAll($event)"></app-search-input>
+            </h3>
+            <div class="all-topics">
+                <mat-card>
+                    <mat-selection-list (selectionChange)="setAsMain($event)">
+                        <div class="fx-end" style="margin-top: -15px; padding-right: 0.5rem; font-size: 0.75rem">main</div>
+                        <mat-divider></mat-divider>
+                        <mat-list-option *ngFor="let topic of $allTopics" [value]="topic" [selected]="topic.mainSearch">
+                            {{topic.topicName}}
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                    </mat-selection-list>
+                </mat-card>
+            </div>
+        </div>
+
+
+        <div class="topics-container">
+            <h3>
+                <span>Main Topics</span>
+                <app-search-input (valueChanged)="searchMain($event)"></app-search-input>
+            </h3>
+            <div class="all-topics">
+                <mat-card>
+                    <mat-list>
+                        <mat-divider></mat-divider>
+                        <mat-list-item *ngFor="let topic of $mainSearchTopics">
+                            {{topic.topicName}}
+                            <mat-divider></mat-divider>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card>
+            </div>
+        </div>
+        <div class="topics-container">
+            <h3>
+                <span>User Topics</span>
+                <app-search-input (valueChanged)="searchUser($event)"></app-search-input>
+            </h3>
+            <div class="all-topics">
+                <mat-card>
+                    <mat-list>
+                        <mat-divider></mat-divider>
+                        <mat-list-item *ngFor="let topic of $userProvidedTopics">
+                            {{topic}}
+                            <mat-divider></mat-divider>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

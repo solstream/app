@@ -1,0 +1,14 @@
+@import "../../../../variables";
+.tv {
+  font-size: 60px;
+  color: $papelGray1;
+  margin-top: -28px;
+}
+
+@font-face {
+  font-family: Proxima Nova,Helvetica,sans-serif;
+}
+.general-font {
+  font-family: Proxima Nova,Helvetica,sans-serif;
+  color: #d2d2d2;
+}

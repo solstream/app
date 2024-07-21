@@ -1,0 +1,27 @@
+.sidenav {
+  position: relative;
+  flex: 0 0 320px;
+  overflow: scroll;
+  width: 320px;
+  height: 100%;
+
+  .fa-arrow-right-to-bracket {
+    position: absolute;
+    top: 17px;
+    right: 16px;
+    transform: rotate(180deg);
+    cursor: pointer;
+  }
+
+  &.collapsed {
+    flex: 0 0 50px;
+    width: 50px;
+    min-width: initial;
+
+    .fa-arrow-right-to-bracket {
+      transform: initial;
+      right: 20px;
+    }
+
+  }
+}

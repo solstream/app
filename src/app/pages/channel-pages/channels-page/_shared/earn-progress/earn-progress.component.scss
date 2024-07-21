@@ -1,0 +1,206 @@
+// DESKTOP
+@import "../../../../../../variables";
+
+.card-wrapper {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  z-index: 2;
+  width: 95px;
+  height: 60px;
+  filter: drop-shadow(-2px 1px 3px rgba(0, 0, 0, 0.2));
+
+  &:hover {
+    filter: drop-shadow(-2px 1px 5px rgba(0, 0, 0, 0.6));
+  }
+
+  &.logged-in,.logged-in:hover {
+    filter: none;
+    opacity: 0.4;
+  }
+}
+
+.card {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  top: 5%;
+  right: 0;
+  z-index: 99999;
+  width: 95px;
+  height: 60px;
+  background: rgba(255,255,255, 1);
+  clip-path: polygon(10% 0%, 100% 0, 100% 20%, 100% 80%, 100% 100%, 10% 100%, 0 80%, 0 20%);
+  transition: width 0.2s, height 0.2s;
+}
+
+.close {
+  display: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  top: 5px;
+  right: 3px;
+  color: $papelGrey2;
+}
+
+svg {
+  transform: rotate(-90deg);
+}
+.percent {
+  transition: stroke-dashoffset 0.5s linear;
+}
+.bg {
+  stroke: #63128B;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  justify-content: center;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+.flex-double-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2
+}
+
+.title, .login {
+  display: none;
+}
+
+span {
+  font-size: 15px;  
+  color: $papelGrey2;
+}
+
+.login {
+  font-size: 12px;
+}
+
+.progress {
+  align-items: center;
+  justify-content: center;
+}
+
+.earned-solstream {
+  visibility: visible;
+  opacity: 1;
+  font-size: 10px;
+  font-weight: bold;
+  color: #c67df9;
+  padding: 5px 10px;
+  transition: all 2s ease;
+
+  &.hide {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    padding: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+}
+
+img.money-icon {
+  height: 20px;
+  width: auto;
+  position: absolute;
+  left: 7px;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  img.logo {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    height: 0;
+    width: 0;
+
+    &.show {
+      visibility: visible;
+      opacity: 1;
+      height: 32px;
+      width: auto;
+    }
+  }
+
+  span {
+    display: block;
+    font-size: 9px;
+
+    color: $papelGrey2;
+    font-weight: bold;
+
+    &.solstream {
+      font-size: 8px;
+    }
+  }
+  
+}
+
+/* CARD HOVER STATE NOT LOGGED-IN */
+.card:hover {
+  width: 180px;
+  height: 100px;
+  display: block;
+  align-items: initial;
+  justify-content: initial;
+  transition: width 0.2s, height 0.2s;
+
+  img.money-icon {
+    left: 8px;
+  }
+
+  .flex-row {
+    padding: 12px 0 5px 0;
+  }
+
+  .progress {
+    flex: 0 0 55px;
+    padding: 0 0 0 20px;
+  }
+
+  .title {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .close {
+    display: block;
+  }
+  
+  .login {
+    display: block;
+    color: $papelGrey2;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+

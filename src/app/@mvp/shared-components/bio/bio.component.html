@@ -1,0 +1,23 @@
+<div class="section-header fx-row">
+    <div style="display: flex; flex: 1 1 auto" class="header-container">
+        <span class="header">
+            <img class="title-icon" src="https://cdn-icons.flaticon.com/png/512/3839/premium/3839656.png?token=exp=1634434660~hmac=56270b8f33dcb9e518776da3fbccb436" width="23px"/>
+            BIO</span>
+    </div>
+</div>
+<div class="section-container fx-row">
+    <div class="empty-message" *ngIf="!getBioText()&& !editMode"> Bio not provided yet </div>
+    <div class="bio-text" *ngIf="getBioText() && !editMode" [innerHTML]="getBioText() | bioText"></div>
+    <div *ngIf="editMode" [formGroup]="roomForm" class="edit-bio-container">
+        <mat-form-field style="flex: 1 1 auto" appearance="outline">
+            <textarea maxlength="4200" rows="20" formControlName="roomDescription" matInput placeholder=""></textarea>
+        </mat-form-field>
+        <div class="edit-bio-container__actions">
+            <button mat-raised-button (click)="saveBioText()" color="primary">Save</button>
+            <button mat-raised-button (click)="editMode = false" color="accent">Cancel</button>
+        </div>
+    </div>
+    <div *ngIf="!editMode && canEdit">
+        <app-edit-icon-button (buttonClicked)="editMode = true"></app-edit-icon-button>
+    </div>
+</div>

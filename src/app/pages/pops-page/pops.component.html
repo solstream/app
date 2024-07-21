@@ -1,0 +1,12 @@
+<ng-container>
+    <app-nav-bar></app-nav-bar>
+    <div class="pops-container y-scroll y-mandatory">
+        <div class="wrapper">
+            <div class="pops-video" *ngFor="let pop of pops">
+                <app-pops-video [popVideo]="pop"></app-pops-video>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+

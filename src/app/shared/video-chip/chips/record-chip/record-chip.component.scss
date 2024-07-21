@@ -1,0 +1,9 @@
+.the-chip .mat-chip {
+  font-weight: 600;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected {
+  border: 1px solid red;
+  color: red;
+  background: transparent !important;
+}

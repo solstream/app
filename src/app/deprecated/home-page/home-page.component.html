@@ -1,0 +1,126 @@
+<div *ngIf="mob.isMobile()" style="width: 100%; background-color: #1f1f1f" id="top-bar-container" [class.fixed]="true">
+    <app-nav-bar></app-nav-bar>
+    <!--    <app-topics-menu style="width: 100%"></app-topics-menu>-->
+</div>
+<ng-container *ngIf="!mob.isMobile()">
+    <!--    <app-pishing-alert-bar></app-pishing-alert-bar>-->
+    <app-cookies-bar></app-cookies-bar>
+    <app-demo-disclaimer></app-demo-disclaimer>
+    <app-nav-bar></app-nav-bar>
+
+    <div *ngIf="ready" class="column">
+        <div class="gradient-container">
+            <!--            <app-topics-menu></app-topics-menu>-->
+            <div class="featured-events">
+                <!--                <app-next-events></app-next-events>-->
+            </div>
+            <!--                        <div class="welcome-message fx-center-items">-->
+            <!--                            <h2>Watch. Stream. Earn.</h2>-->
+            <!--                        </div>-->
+            <!--                        <div class="featured-events">-->
+            <!--                            <app-scrolling-events></app-scrolling-events>-->
+            <!--                        </div>-->
+            <div class="welcome-message fx-center-items">
+                <mat-chip
+                        class="network-chip pointer">
+                    <img class="chain-logo" src="../../../assets/logos/maticlogo.png"/>Polygon Testnet</mat-chip>
+                <!--                <mat-chip class="network-chip">-->
+                <!--                    <img class="chain-logo disabled eth-logo-home" src="assets/logos/bnbchainlogo.png"/> Binance Smart Chain</mat-chip>-->
+
+                <!--                <mat-chip class="network-chip pointer"  (click)="switchNetwork(chains.ethereum)">-->
+                <!--                    <img class="chain-logo eth-logo-home" src="assets/logos/ethlogo.png"/> Ethereum</mat-chip>-->
+            </div>
+            <app-video-carousel *ngIf="mob.isMobile() && popsVideo && popsReady" [carouselInput]="popsVideo"></app-video-carousel>
+            <app-video-carousel *ngIf="mob.isDesktop() && videoCarouselInput && ready" [carouselInput]="videoCarouselInput"></app-video-carousel>
+
+            <div class="main-container">
+                <app-advertisement></app-advertisement>
+                <hr class="home-hr"/>
+                <app-home-videos [uploadedVideo]="uploadedVideos"></app-home-videos>
+                <hr class="home-hr"/>
+                <app-home-pops *ngIf="popsReady" [uploadedVideo]="popsVideo.videos"></app-home-pops>
+
+
+                <hr class="home-hr-light"/>
+                <app-twitter></app-twitter>
+                <hr class="home-hr-light"/>
+            </div>
+            <div class="main-container">
+                <h4>Popular</h4>
+                <app-trending-content *ngIf="trendingContentInput" [data]="trendingContentInput"></app-trending-content>
+                <app-main-channels [iconUrl]="'/assets/icons/trending.png'" [rooms]="channels"
+                                   [title]="'Trending channels'"></app-main-channels>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="mob.isMobile()">
+    <!--    <div [class.post-fix]="true">-->
+    <div>
+        <!--        <app-pishing-alert-bar></app-pishing-alert-bar>-->
+        <app-cookies-bar></app-cookies-bar>
+        <app-demo-disclaimer></app-demo-disclaimer>
+        <div>
+            <div *ngIf="ready" [class.mob]="mob.isMobile()" class="column">
+                <div class="gradient-container">
+                    <div class="featured-events-mobile">
+                        <!--                        <app-next-events></app-next-events>-->
+                    </div>
+<!--                    <div class="welcome-message-mob">-->
+
+<!--                        <div class="welcome-message fx-center-items">-->
+<!--                            &lt;!&ndash;                            <mat-chip class="network-chip pointer"  (click)="switchNetwork(chains.bnb)">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <img class="chain-logo" src="assets/logos/bnbchainlogo.png"/> Binance Smart Chain</mat-chip>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <mat-chip&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    class="network-chip pointer" (click)="switchNetwork(chains.matic)">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <img class="chain-logo" src="assets/logos/maticlogo.png"/>Matic</mat-chip>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <mat-chip class="network-chip pointer"  (click)="switchNetwork(chains.ethereum)">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <img class="chain-logo eth-logo-home" src="assets/logos/ethlogo.png"/> Ethereum</mat-chip>&ndash;&gt;-->
+<!--                            <mat-chip-->
+<!--                                    class="network-chip pointer">-->
+<!--                                <img class="chain-logo" src="assets/logos/maticlogo.png"/>Polygon Testnet</mat-chip>-->
+<!--                        </div>-->
+
+<!--&lt;!&ndash;                        <h2>Watch. Stream. Earn.&ndash;&gt;-->
+<!--&lt;!&ndash;                        </h2>&ndash;&gt;-->
+
+<!--                    </div>-->
+
+                    <app-video-carousel *ngIf="mob.isMobile() && popsVideo && popsReady" [carouselInput]="popsVideo"></app-video-carousel>
+                    <app-video-carousel *ngIf="mob.isDesktop() && videoCarouselInput && ready" [carouselInput]="videoCarouselInput"></app-video-carousel>
+                    <div class="main-container">
+                        <app-home-videos [uploadedVideo]="uploadedVideos"></app-home-videos>
+                        <hr class="home-hr"/>
+                        <app-home-pops *ngIf="popsReady" [uploadedVideo]="popsVideo.videos"></app-home-pops>
+
+                        <app-main-channels [iconUrl]="'/assets/icons/trending.png'" [rooms]="channels"
+                                           [title]="'Trending channels'"></app-main-channels>
+                        <hr class="home-hr-light"/>
+                        <app-twitter></app-twitter>
+                        <hr class="home-hr-light"/>
+                        <div class="popular-content-title">popular content you might like</div>
+                        <app-trending-content *ngIf="trendingContentInput"
+                                              [data]="trendingContentInput"></app-trending-content>
+                        <app-advertisement></app-advertisement>
+                    </div>
+                </div>
+                <div style="margin-top: 50px;">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6686742780517064"
+                            crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-7q+eo+1+2-5"
+                         data-ad-client="ca-pub-6686742780517064"
+                         data-ad-slot="5740636362"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    <app-footer></app-footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

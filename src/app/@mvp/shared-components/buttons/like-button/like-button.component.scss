@@ -1,0 +1,22 @@
+@import "../../../../../variables";
+
+.like-btn-container {
+  align-items: center;
+  display: flex;
+
+  span {
+    font-size: 0.75rem;
+    margin-left: 6px;
+  }
+
+  .fa-thumbs-up.active {
+    color: $papelPurple1;
+  }
+}
+
+@media (max-width: 600px) {
+  .fa-solid, .fas {
+    font-weight: 900;
+    font-size: 25px;
+  }
+}

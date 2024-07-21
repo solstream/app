@@ -1,0 +1,35 @@
+<div class="mat-dialog-container dialog-container">
+    <h1 mat-dialog-title>Transfer</h1>
+
+    <div mat-dialog-content class="mat-typography">
+        <div class="fx-center-items" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <div *ngIf="!isLoading">
+            <h3>Account name:</h3>
+            <p>{{data.accountName}}</p>
+            <h3>Created:</h3>
+            <p>{{data.created}}</p>
+            <h3>Amount:</h3>
+            <p>{{data.amount}}</p>
+            <form [formGroup]="transferForm">
+                <mat-form-field appearance="fill">
+                    <mat-label>Transaction link</mat-label>
+                    <input type="text" matInput formControlName="transactionUrl">
+                    <mat-error *ngIf="transferForm.get('transactionUrl').errors">
+                        Transaction url is required
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="showError">
+        <p class="error">Something went wrong, please try again.</p>
+    </div>
+    <div mat-dialog-actions *ngIf="!isLoading" align="end">
+        <button mat-button mat-dialog-close>Close</button>
+        <button mat-button cdkFocusInitial
+            class="standard-button-purple mat-raised-button" (click)="onTransfer(data.id, data.amount)">Transfer</button>
+    </div>
+</div>

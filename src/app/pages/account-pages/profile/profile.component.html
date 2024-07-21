@@ -1,0 +1,23 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="admin-page-container">
+    <div class="profile-container">
+        <div class="avatar">
+            <img [src]="user.profileImage || 'https://via.placeholder.com/100'" alt="User Avatar" class="avatar_img">
+            <div class="avatar__options">
+                <!-- Upload input -->
+                <label for="upload" class="upload_label">Upload
+                    <input type="file" id="upload" hidden (change)="uploadImage($event)">
+                </label>
+            </div>
+        </div>
+        <div class="user-name">
+            <!-- Display the user's name -->
+            {{ user.name }}
+        </div>
+        <div class="user-info">
+            <!-- Display additional user details -->
+            <p>{{ createdAt }}</p>
+        </div>
+    </div>
+</div>
